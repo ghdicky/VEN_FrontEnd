@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!-- this is the google map API-->
+
+    <!-- <script type="text/javascript" src="file:///myVEN/VENfront/templates/scripts/google_charts_loader.js"></script> <!-- this is the google map API-->
+
+
+    <script src="http://mathmed.blox.pl/resource/plot.js"></script> <!-- this is the plot.js dynamic canvas API-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+    <script type="text/javascript">
+
+      // the google.charts.load and google.charts.setOnLoadCallBack will be called only when the whole HTML page is fully loaded.
+      // If some functions sitting in the <script> before/after <body> is executed and the whole page is not ready, if the fucntions call for example drawtimeline
+      // the google.visuallization will not be loaded yet.
+      google.charts.load('current', {'packages':['corechart','line','bar','timeline','table']});
+      google.charts.setOnLoadCallback(drawLogScales); // when page is refreshed and reloaded, draw the diagram for venpower
+      google.charts.setOnLoadCallback(drawbarchart); // when page is refreshed and reloaded, draw the diagram for venusage
+      google.charts.setOnLoadCallback(drawtimeline); // when page is refreshed and reloaded, draw the diagram for eveninfo
+      google.charts.setOnLoadCallback(drawtable); //when page is refreshed and reloaded, draw the diagram for venlog
+      google.charts.setOnLoadCallback(refreshVENInfo); //when page is refreshed and reloaded, update the veninfo
+      google.charts.setOnLoadCallback(drawtable_event); //when page is refreshed and reloaded, update the venevent table
+      google.charts.setOnLoadCallback(setPeriodicVENLogUpdateTimer); //when page is refreshed and reloaded, set the timer to periodically query the VEN Log from MySQL
+      google.charts.setOnLoadCallback(setPeriodicVENEventUpdateTimer); //when page is refreshed and reloaded, set the timer to periodically query the VEN Event from MySQL
+      google.charts.setOnLoadCallback(drawtable_event_signal); // when page is refreshed and reloaded, update the veneventsignal table, take the 1st eventID in the venevent table
+      google.charts.setOnLoadCallback(drawtable_event_activePeriod); // when page is refreshed and reloaded, update the veneventactiveperiod, take the 1 st eventID in the venevent table
+
+      //google.charts.setOnLoadCallback(changeContextMenu);
+
+      var myTimerVENLog;
+      var myTimerVENEvent;
+
+      //var eventIDforMenu;
+
+
+
+
+      //function changeContextMenu() {
+      //    var contextMenu = document.getElementById("eventLog").contextMenu;
+
+          // Change the label of the first menu entry
+      //    contextMenu.firstElementChild.label = "Opt In";
+
+      //}
+
+
+      function drawLogScales() {
+       var data = new google.visualization.DataTable();
+       data.addColumn('string', 'Time');
+       data.addColumn('number', 'Power');
+       var arraydata={{ venpower|safe }};
+       data.addRows(arraydata);
+
+       var options = {
+        title:'24-hr Real Power',
+        hAxis: {
+          title: 'Time (HH:MM)',
+          logScale: true
+        },
+        vAxis: {
+          title: 'Energy (kW)',
+          logScale: false
+        },
+        colors: ['#a52714'],
+        backgroundColor: ['#F5F4F4'],
+        lineWidth: 4,
+
+      };
+       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+      }
+
+
+      function drawbarchart(){
+          //var data = new google.visualization.DataTable();
+          //data.AddColumn('string','Date');
+          //data.AddColumn('number','Energy');
+          var arraydata = {{venusage|safe}};
+          var data = google.visualization.arrayToDataTable(arraydata);
+          //data.addRows(arraydata);
+          var options = {
+            title: 'Historical Energy Usage',
+            chartArea: {width: '80%'},
+            hAxis: {
+              title: 'Date',
+              minValue: 0
+            },
+            vAxis: {
+              title: 'Energy Usage(kWh)'
+            },
+              colors: ['#a52714'],
+            backgroundColor: ['#F5F4F4'],
+          };
+          var chart = new google.visualization.ColumnChart(document.getElementById('barchart'));
+          chart.draw(data,options);
+
+      }
+
+
+      function drawpowercanvas() {
+
+          function prepData(range, amount) {
+              var arr = new Array(amount);
+
+              for (var i=0; i<amount; i++) {
+                arr[i] = (Math.random()-0.5) * range;
+              }
+
+              return arr;
+          }
+
+          function recalc() {
+
+              var randomJump = Math.random()*10;
+
+              for(var i=1; i<ilosc; i++) {
+                  active_power_data[i-1] = active_power_data[i];
+              }
+
+              active_power_data[ilosc-1] = active_power_data[ilosc-2] + Math.random()*1 - 0.5;
+
+              if(randomJump > 8) {
+                  active_power_data[ilosc-1] = active_power_data[ilosc-2] + Math.random()*10 - 5;
+              }
+
+              power_canvas.data = active_power_data;
+              power_canvas.plot();
+
+          }
+
+
+        var ilosc = 200;
+
+        var power_canvas = new MakeDraw();
+        power_canvas.id = "power_canvas";
+
+        //power_canvas.plotColor = 'rgba(200,232,53,1)';
+        power_canvas.plotColor = 'rgba(0,0,200,2)';
+        power_canvas.gridColor = 'rgba(0,0,0,0.05)';
+        power_canvas.fSize = 15;
+        power_canvas.lineWidthP = 4;
+
+        power_canvas.enumerateP = 0;
+        power_canvas.enumerateH = 0;
+        power_canvas.enumerateV = 1;
+
+
+        var active_power_data = prepData(10, ilosc);
+
+        //power_canvas.data = active_power_data;
+
+        //power_canvas.plot();
+
+
+        var t = setInterval(recalc, 100);
+
+
+      }
+
+
+      function drawpowercanvasmultilines() {
+
+          var ctx = document.getElementById("power_canvas_multiline");
+          ctx.style.backgroundColor = 'rgba(255, 255, 255, 1)'; // set the canvas background color as white
+          var chart1 = new Chart(ctx, {
+
+              type: 'line',
+
+              data: {
+                  labels: ["", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                  datasets: [{
+                      label: '# of Votes',
+                      data: [12, 19, 3, 5, 2, 3],
+                      backgroundColor: [
+                          'rgba(255, 99, 132, 0.2)',
+                          'rgba(54, 162, 235, 0.2)',
+                          'rgba(255, 206, 86, 0.2)',
+                          'rgba(75, 192, 192, 0.2)',
+                          'rgba(153, 102, 255, 0.2)',
+                          'rgba(255, 159, 64, 0.2)'
+                      ],
+                      boarderColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderWidth: 1
+
+                  }]
+              },
+
+              options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginZero: true
+                          }
+
+                      }]
+
+                  }
+
+              }
+
+          });
+
+
+
+
+
+
+
+      }
+
+
+      function drawpowercanvasmultilinesV2() {
+
+          function updateChart(){
+
+              var count;
+
+              if (first_flag) {
+                  count = dataLength;
+                  first_flag = false;
+              }
+              else {
+                  count = 1;
+              }
+
+              //count = count || 1;
+
+              //alert(count);
+
+              for (var j=0; j<count; j++) {
+                  yVal_P = Math.random();
+                  dps_P.push({x: xVal_P, y: yVal_P});
+                  xVal_P++;
+              }
+
+              //alert(dps.length);
+
+              if (dps_P.length > dataLength) {
+                  dps_P.shift();
+              }
+
+
+              for (var i=0; i<count; i++) {
+                  yVal_Q = Math.random();
+                  dps_Q.push({x: xVal_Q, y: yVal_Q});
+                  xVal_Q++;
+              }
+
+              //alert(dps.length);
+
+              if (dps_Q.length > dataLength) {
+                  dps_Q.shift();
+              }
+
+
+              chart.render();
+
+          }
+
+          var first_flag = true;
+
+          //var dps = [{x:1, y:10}, {x:2, y:32}, {x:3, y:20}, {x:4, y:20}, {x:5, y:20}, {x:6, y:20}];
+          var dps_P = [];
+          var xVal_P = 0;
+          var yVal_P = 200;
+
+          var dps_Q = [];
+          var xVal_Q = 0;
+          var yVal_Q = 10;
+          //dps.push({x: xVal, y: yVal});
+
+          var dataLength = 20; // only 20 points are visible in any time interval
+          var chart = new CanvasJS.Chart("power_canvas_multiline_v2_div", {
+              title :{
+                  text: "Dynamic P and Q"
+
+              },
+              axisY: {
+                  includeZero: false,
+                  title: "kW/kVAr"
+
+              },
+              axisX: {
+                  title: "time (s)"
+              },
+              data: [{  type: "line",
+                        dataPoints: dps_P,
+                        showInLegend: true,
+                        legendText: "Active Power P"
+                     },
+                     {  type: "line",
+                        dataPoints: dps_Q,
+                        showInLegend: true,
+                        legendText: "Reactive Power Q"
+
+                     }
+              ]
+
+          });
+
+          //chart.render();
+
+          updateChart();
+
+          setInterval(updateChart, 1000); // update interval is 1000 ms = 1 s
+
+
+
+      }
+
+
+
+
+
+      function drawtimeline(){
+          var arraydata = {{eventinfo|safe}};
+          var container = document.getElementById('eventCalendar');
+          var chart = new google.visualization.Timeline(container);
+          var dataTable = new google.visualization.DataTable();
+          dataTable.addColumn({ type: 'string', id: 'EventStatus' });
+          dataTable.addColumn({ type: 'string', id: 'EventID' });
+          dataTable.addColumn({ type: 'date', id: 'Start' });
+          dataTable.addColumn({ type: 'date', id: 'End' });
+          for (index=0,len=arraydata.length;index<len;++index){
+              //console.log(arraydata[index][0]);
+
+              start=arraydata[index][2];
+              end = arraydata[index][3];
+              a =start.split(/[- :]/);
+              b = end.split(/[- :]/);
+              //console.log(Number(a[0]));
+              dataTable.addRow([arraydata[index][0], arraydata[index][1], new Date(Number(a[0]),Number(a[1]),Number(a[2]),Number(a[3]),Number(a[4]),Number(a[5])), new Date(Number(b[0]),Number(b[1]),Number(b[2]),Number(b[3]),Number(b[4]),Number(b[5]))]);
+          }
+          chart.draw(dataTable);
+
+      }
+
+
+      function drawtable(){
+          var data = new google.visualization.DataTable();
+          var tabledata = {{venlog|safe}};
+          data.addColumn('string', 'Time Stamp');
+          data.addColumn('string', 'Response Time');
+          data.addColumn('string', 'VEN Request');
+          data.addColumn('string', 'VTN Response');
+          data.addColumn('string', 'Response Code');
+          data.addColumn('string', 'Response Description');
+          data.addRows(tabledata);
+          var table = new google.visualization.Table(document.getElementById('table_div'));
+          table.draw(data,{shorRowNumber: false, width: '100%', height: '100%'});
+
+
+      }
+
+
+     function drawtable_event() {
+         var data = new google.visualization.DataTable();
+         var tabledata = {{venevent|safe}};
+         data.addColumn('string', 'Event ID');
+         data.addColumn('string', 'Start Time');
+         data.addColumn('string', 'Duration');
+         data.addColumn('string', 'Event Status');
+         data.addColumn('string', 'Opt State');
+         data.addColumn('string', 'Market Context');
+         //data.addColumn('string', 'Signal Type');
+         //data.addColumn('string', 'Current Value');
+         data.addColumn('string', 'VTN Comment');
+         data.addColumn('string', 'Test Event');
+         data.addColumn('string', 'Response Required');
+         data.addColumn('string', 'Modification Number');
+
+         data.addRows(tabledata);
+         var table = new google.visualization.Table(document.getElementById('eventLog'));
+         table.draw(data, {shorRowNumber: false, width: '100%', height: '100%'});
+
+         //register the select event for the event log table
+         google.visualization.events.addListener(table, 'select', selectHandlerEventLogTable);
+
+
+         function selectHandlerEventLogTable() {
+
+             // get the selected row index: selection[0].row
+             // get the value of the cell (selection[0].row, column)
+             var selection = table.getSelection();
+             var eventID = data.getFormattedValue(selection[0].row, 0);
+
+             // set the value of individualOptMenu contains eventID once click on the Event Log table
+             var menuInfo = document.getElementById("individualOptMenu");
+
+             menuInfo[0].eventIDProperty = eventID; // append eventID to the eventIDProperty of the 1st option of individualOptMenu
+             menuInfo[0].text = "Event " + eventID + ": Opt In or Opt Out?"; // update the text for the 1st option of individualOptMenu
+             menuInfo.selectedIndex = 0;
+
+             //alert(menuInfo[0].text);
+
+             //eventIDforMenu = eventID;
+             //alert("You have selected the row: " + eventID);
+             //alert('The user is navigating to table ' + data);
+
+             //use AJAX to get event Active Period info
+             $.ajax({
+                 type: "POST", // this an AJAX POST request
+
+                 // this html is running as http://127.0.0.1:8000/web/gview,
+                 // we want to call the url as http://127.0.0.1:8000/web/mysqlveneventactiveperiod/, so use ../ for parental folder
+                 // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                 // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlveneventactiveperiod/ has been defined to point to function ajax_get_ven_event_active_period() in views.py of VENfront folder
+                 url: "http://127.0.0.1:8000/web/mysqlveneventactiveperiod/",
+
+                 contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                 data: (eventID), // send_data of the AJAX POST request; convert into JSON string
+
+                 dataType: 'json', // this indicate what type of data expected from the Server for the AJAX POST request.
+                                   // If it is json, then the return is a already a json object and dont use JSON.parse() to convert
+                                   // if it is text, then can use JSON.parse() to convert the text to a json object
+
+                 // the result paramater inside the function(result) is indeed the data inside the AJAX response
+                 success: function (result) {
+
+                     //alert("Return venlog in JSON");
+
+                     //var periodidVenLog = result;
+
+
+                     //var jsonObj = JSON.parse(result);
+
+                     //var data = new google.visualization.DataTable();
+
+
+                     // update the event active period info
+                     document.getElementById("eventStartTime").innerHTML = result[0].startTime;
+
+                     document.getElementById("eventDuration").innerHTML = result[0].duration;
+
+                     document.getElementById("eventStartAfter").innerHTML = result[0].startAfter;
+
+                     document.getElementById("eventEiNotification").innerHTML = result[0].eiNotification;
+
+                     document.getElementById("eventEiRampUp").innerHTML = result[0].eiRampUp;
+
+                     document.getElementById("eventEiRecovery").innerHTML = result[0].eiRecovery;
+
+
+                     //use AJAX to get event Signal and Interval info
+                     $.ajax({
+                         type: "POST", // this an AJAX POST request
+
+                         // this html is running as http://127.0.0.1:8000/web/gview,
+                         // we want to call the url as http://127.0.0.1:8000/web/mysqlveneventsignal/, so use ../ for parental folder
+                         // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                         // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlveneventsignal/ has been defined to point to function ajax_get_ven_event_active_period() in views.py of VENfront folder
+                         url: "http://127.0.0.1:8000/web/mysqlveneventsignal/",
+
+                         contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                         data: (eventID), // send_data of the AJAX POST request; convert into JSON string
+
+                         dataType: 'json', // this indicate what type of data expected from the Server for the AJAX POST request.
+                                           // If it is json, then the return is a already a json object and dont use JSON.parse() to convert
+                                           // if it is text, then can use JSON.parse() to convert the text to a json object
+
+                         // the result paramater inside the function(result) is indeed the data inside the AJAX response
+                         success: function (result) {
+
+                             //alert("Return venlog in JSON");
+
+                             //var periodidVenLog = result;
+
+
+                             //var jsonObj = JSON.parse(result);
+
+                             //var data = new google.visualization.DataTable();
+
+                             var data = new google.visualization.DataTable();
+                             //var tabledata = {['d', '3', '5', 'd', '']};
+                             data.addColumn('string', 'Event ID');
+                             data.addColumn('string', 'Signal ID');
+                             data.addColumn('string', 'Signal Name');
+                             data.addColumn('string', 'Signal Type');
+                             data.addColumn('string', 'Signal Interval');
+                             data.addColumn('string', 'UID');
+                             data.addColumn('string', 'Target Value');
+                             data.addColumn('string', 'Current Value');
+                             data.addColumn('string', 'Modification Number');
+                             //data.addRows([['dd', '2', '3', '41', '21', 'dwea']]);
+
+
+                             for (i = 0; i < result.length; i++) {
+                                 data.addRows([[result[i].eventID, result[i].signalID, result[i].signalName, result[i].signalType, result[i].signalInterval, result[i].UID, result[i].targetValue, result[i].currentValue, result[i].modificationNumber]]);
+                             }
+
+                             var table = new google.visualization.Table(document.getElementById('eventInterval'));
+                             table.draw(data, {shorRowNumber: false, width: '100%', height: '100%'});
+
+
+                         }
+
+                     });
+
+
+                 }
+
+             });
+
+
+         }
+
+     }
+
+
+     function drawtable_event_activePeriod(){
+
+          // get the eventActivePeriod info from the render when the page is loaded
+          var veneventactiveperiod = {{veneventactiveperiod|safe}};
+
+
+          // update the event active period info
+          document.getElementById("eventStartTime").innerHTML = veneventactiveperiod[0][0];
+
+          document.getElementById("eventDuration").innerHTML = veneventactiveperiod[0][1];
+
+          document.getElementById("eventStartAfter").innerHTML = veneventactiveperiod[0][2];
+
+          document.getElementById("eventEiNotification").innerHTML = veneventactiveperiod[0][3];
+
+          document.getElementById("eventEiRampUp").innerHTML = veneventactiveperiod[0][4];
+
+          document.getElementById("eventEiRecovery").innerHTML = veneventactiveperiod[0][5];
+
+      }
+
+     
+
+
+     function drawtable_event_signal(){
+          var data = new google.visualization.DataTable();
+          var tabledata = {{veneventsignal|safe}};
+          data.addColumn('string', 'Event ID');
+          data.addColumn('string', 'Signal ID');
+          data.addColumn('string', 'Signal Name');
+          data.addColumn('string', 'Signal Type');
+          data.addColumn('string', 'Signal Interval');
+          //data.addColumn('string', 'Market Context');
+          //data.addColumn('string', 'Signal Type');
+          //data.addColumn('string', 'Current Value');
+          data.addColumn('string', 'UID');
+          data.addColumn('string', 'Target Value');
+          data.addColumn('string', 'Current Value');
+          data.addColumn('string', 'Modification Number');
+
+          data.addRows(tabledata);
+          var table = new google.visualization.Table(document.getElementById('eventInterval'));
+          table.draw(data,{shorRowNumber: false, width: '100%', height: '100%'});
+
+      }
+
+
+      function setPeriodicVENLogUpdateTimer() {
+
+         // get the pollFrequency after VEN info is updated upon page loading
+         var pollFrequency = document.getElementById("pollFrequency").innerHTML * 1000;
+
+         // setInterval function will repeat the function every pollFrequency, the unit is millisecond
+         myTimerVENLog = setInterval(periodicUpdateVENLogfromDB, pollFrequency);
+
+      }
+
+
+      function setPeriodicVENEventUpdateTimer() {
+
+         // the pollFrequency for VEN Event is 300 s
+         var pollFrequency = 300 * 1000;
+
+         // setInterval function will repeat the function
+         myTimerVENEvent = setInterval(periodicUpdateVENEventfromDB, pollFrequency);
+
+      }
+
+
+      function sendHttpRequest(message) {
+
+
+
+          // define a new XMLHttpRequest
+          var xhr = new XMLHttpRequest();
+
+          // define the type, destination url of the HTTP requests
+          //xhr1.open('POST', "http://192.168.56.201:9080", true); true means asynchronous, fasle means synchronous;
+          //in real world, the xhr2.open() is triggered and then the program does other tasks and does not need to wait for it --> so use true/asynchronous
+          //xhr2.open('POST', "http://127.0.0.1:9080", true);
+
+          xhr.open("POST", "http://127.0.0.1:9080", true);
+
+          // send the HTTP Post Request with content message, message is plain text but in Json format
+          xhr.send(message);
+
+
+          //listening on the readystatechange event of xhr and execute a specific function processRequest()
+          //readyState has 4 values:
+          // 0: UNSENT
+          // 1: OPENED
+          // 2: HEADERS_RECEIVED
+          // 3: LOADING
+          // 4: DONE
+
+          xhr.addEventListener("DONE", processRequest(xhr), true);
+
+
+          //xhr2.onreadystatechange = processRequest(xhr2);
+
+      }
+
+      function processRequest(httpresponse) {
+
+              //var number = 1;
+              alert("Request receives a response");
+              alert("Request state: " + httpresponse.readyState);
+              alert("Request status: " + httpresponse.status);
+              //alert(httpresponse.responseText);
+
+
+              if (httpresponse.readyState == 4 && httpresponse.status == 200) {
+                  //document.getElementById("defaultOptDB").innerHTML = response.responseText;
+                  //document.getElementById("defaultOptDB").innerHTML = httpresponse.responseText;
+
+
+                  //after the defaultOptMode has been updated, retrieve the data from the MySQL database by calling getOptModefromDB()
+                  getOptModefromDB();
+
+                  getVENInfofromDB();
+
+
+
+              }
+
+              //check the content of the http response
+              //if
+
+
+      }
+
+
+      function refreshVENInfo(){
+
+          var veninfo = {{veninfo|safe}};
+          var vendefaultOpt = {{vendefaultoptmode|safe}};
+          document.getElementById("venName").innerHTML = veninfo[0][0];
+
+          document.getElementById("venID").innerHTML = veninfo[0][1];
+
+          document.getElementById("vtnID").innerHTML = veninfo[0][2];
+
+          document.getElementById("vtnURL").innerHTML = veninfo[0][3];
+          document.getElementById("vtnURL").href = veninfo[0][3];
+
+
+          document.getElementById("pollFrequency").innerHTML = veninfo[0][4];
+
+
+          document.getElementById("defaultOptDB").innerHTML = vendefaultOpt[0][0];
+     }
+
+
+
+
+
+          //if (xhr2.readyState == XMLHttpRequest.DONE) {
+          //    alert("xhr2 receives something!!");
+          //}
+      //}
+
+
+
+      function sendOptMode() {
+
+          //get selected radio value for default opt from form and the associated radio object
+
+          var form = document.getElementById("defaultOpt"); //form is identified by id="defaultOpt"
+          var opt_value = form.elements["choiceOfOpt"].value; //radio is identified by name="choiceofOpt"
+          if (opt_value == "") {
+              //if radio with name "choiceofOpt is not selected, the value of the radio will be empty string which is ""
+              alert("Please specify the default opt mode for the VEN!");
+
+          } else {
+              //if radio is selected, the value of the radio will be non-empty string
+              alert("Activated Mode: " + opt_value + " !");
+              //var message = {"defaultOptMode":opt_value};
+
+              //use json format for the message content; Note the HTTP Post Request does not use Json type, it only use text/plain; Json cannot be used because of the Cross Domain issues
+              var message = '{"defaultOptMode":"' + opt_value + '"}';
+
+              sendHttpRequest(message);
+          }
+      }
+
+
+       function getOptModefromDB() {
+
+              $.ajax({
+                 type: "POST", // this an AJAX POST request
+
+                 // this html is running as http://127.0.0.1:8000/web/gview,
+                 // we want to call the url as http://127.0.0.1:8000/web/mysqldefaultoptmode/, so use ../ for parental folder
+                 // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                 // then in urls.py of VENfront, http://127.0.0.1:8000/web/mysqldefaultoptmode/ has been defined to point to function ajax_get_ven_defaultoptmode() in views.py of VENfront folder
+                 url: "http://127.0.0.1:8000/web/mysqldefaultoptmode/",
+
+                 contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                 data: JSON.stringify("function: get_ven_defaultoptmode"), // send_data of the AJAX POST request; convert into JSON string
+
+                 dataType: 'text', // this indicate what type of data expected from the Server for the AJAX POST request
+
+                 // the data paramater inside the function() is indeed the data inside the AJAX response
+                 success: function(result) {
+
+                 //alert(result);
+
+                 var obj = JSON.parse(result);
+
+
+                 // update the display of current default opt mode on the page
+                 document.getElementById("defaultOptDB").innerHTML = obj.defaultOptMode;
+
+                 //alert (obj.defaultOptMode);
+                 //var pythondata = { {result|safe} };
+                 //alert(pythondata[0][0]);
+
+                  //alert(pythondata_html[0][0]);
+
+                 }
+
+           });
+
+          //if (document.getElementById('optin').checked){
+          //    opt_value = document.getElementById('optin'.value);
+          //}
+          //else if (document.getElementById('optout').checked){
+          //    opt_value = document.getElementById('optin'.value);
+          //}
+
+          //alert(opt_value);
+      }
+
+
+
+    function getVENInfofromDB(){
+
+           $.ajax({
+                 type: "POST", // this an AJAX POST request
+
+                 // this html is running as http://127.0.0.1:8000/web/gview,
+                 // we want to call the url as http://127.0.0.1:8000/web/mysqlveninfo/, so use ../ for parental folder
+                 // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                 // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlveninfo/ has been defined to point to function ajax_get_ven_info() in views.py of VENfront folder
+                 url: "http://127.0.0.1:8000/web/mysqlveninfo/",
+
+                 contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                 data: JSON.stringify("function: get_ven_info"), // send_data of the AJAX POST request; convert into JSON string
+
+                 dataType: 'text', // this indicate what type of data expected from the Server for the AJAX POST request
+
+                 // the data paramater inside the function() is indeed the data inside the AJAX response
+                 success: function(result) {
+
+                 //alert(result);
+
+                 var obj = JSON.parse(result);
+
+
+                 // update the display of current ven info on the page
+                 document.getElementById("venName").innerHTML = obj.venName;
+
+                 document.getElementById("venID").innerHTML = obj.venID;
+
+                 document.getElementById("vtnID").innerHTML = obj.vtnID;
+
+                 document.getElementById("vtnURL").innerHTML = obj.vtnURL;
+                 document.getElementById("vtnURL").href = obj.vtnURL;
+
+                 document.getElementById("pollFrequency").innerHTML = obj.pollFrequency;
+
+
+                 //alert (obj.defaultOptMode);
+                 //var pythondata = { {result|safe} };
+                 //alert(pythondata[0][0]);
+
+                  //alert(pythondata_html[0][0]);
+
+                 }
+
+           });
+
+
+
+    }
+
+
+    function periodicUpdateVENLogfromDB() {
+
+        $.ajax({
+            type: "POST", // this an AJAX POST request
+
+            // this html is running as http://127.0.0.1:8000/web/gview,
+            // we want to call the url as http://127.0.0.1:8000/web/mysqlvenlog/, so use ../ for parental folder
+            // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+            // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlvenlog/ has been defined to point to function ajax_get_ven_log() in views.py of VENfront folder
+            url: "http://127.0.0.1:8000/web/mysqlvenlog/",
+
+            contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+            data: ("function: get_ven_log"), // send_data of the AJAX POST request; convert into JSON string
+
+            dataType: 'json', // this indicate what type of data expected from the Server for the AJAX POST request.
+                              // If it is json, then the return is a already a json object and dont use JSON.parse() to convert
+                              // if it is text, then can use JSON.parse() to convert the text to a json object
+
+            // the result paramater inside the function(result) is indeed the data inside the AJAX response
+            success: function (result) {
+
+                //alert("Return venlog in JSON");
+
+                //var periodidVenLog = result;
+
+
+                //var jsonObj = JSON.parse(result);
+
+                var data = new google.visualization.DataTable();
+                //var tabledata = {['d', '3', '5', 'd', '']};
+                data.addColumn('string', 'Time Stamp');
+                data.addColumn('string', 'Response Time');
+                data.addColumn('string', 'VEN Request');
+                data.addColumn('string', 'VTN Response');
+                data.addColumn('string', 'Response Code');
+                data.addColumn('string', 'Response Description');
+                //data.addRows([['dd', '2', '3', '41', '21', 'dwea']]);
+
+
+                for (i = 0; i < result.length; i++) {
+                    data.addRows([[result[i].time, result[i].responseTime, result[i].venRequest, result[i].vtnResponse, result[i].responseCode, result[i].responseDescription]]);
+                }
+
+                var table = new google.visualization.Table(document.getElementById('table_div'));
+                table.draw(data, {shorRowNumber: false, width: '100%', height: '100%'});
+
+                //call the drawtable() function to update the ven_log
+                //drawtable();
+
+            }
+
+        });
+    }
+
+
+    function periodicUpdateVENEventfromDB(){
+
+           $.ajax({
+                 type: "POST", // this an AJAX POST request
+
+                 // this html is running as http://127.0.0.1:8000/web/gview,
+                 // we want to call the url as http://127.0.0.1:8000/web/mysqlvenlog/, so use ../ for parental folder
+                 // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                 // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlvenevent/ has been defined to point to function ajax_get_ven_event() in views.py of VENfront folder
+                 url: "http://127.0.0.1:8000/web/mysqlvenevent/",
+
+                 contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                 data: ("function: get_ven_event"), // send_data of the AJAX POST request; convert into JSON string
+
+                 dataType: 'json', // this indicate what type of data expected from the Server for the AJAX POST request.
+                                   // If it is json, then the return is a already a json object and dont use JSON.parse() to convert
+                                   // if it is text, then can use JSON.parse() to convert the text to a json object
+
+                 // the result paramater inside the function(result) is indeed the data inside the AJAX response
+                 success: function(result) {
+
+                 //alert("Return venlog in JSON");
+
+                 //var periodidVenLog = result;
+
+
+                 //var jsonObj = JSON.parse(result);
+
+                 var data = new google.visualization.DataTable();
+                 //var tabledata = {['d', '3', '5', 'd', '']};
+                 data.addColumn('string', 'Event ID');
+                 data.addColumn('string', 'Start Time');
+                 data.addColumn('string', 'Duration');
+                 data.addColumn('string', 'Event Status');
+                 data.addColumn('string', 'Opt State');
+                 data.addColumn('string', 'Market Context');
+                 //data.addColumn('string', 'Signal Type');
+                 //data.addColumn('string', 'Current Value');
+                 data.addColumn('string', 'VTN Comment');
+                 data.addColumn('string', 'Test Event');
+                 data.addColumn('string', 'Response Required');
+                 data.addColumn('string', 'Modification Number');
+                 //data.addRows([['dd', '2', '3', '41', '21', 'dwea']]);
+
+
+                 for (i=0; i<result.length; i++) {
+                     data.addRows([[result[i].eventID, result[i].eventTime, result[i].eventDuration, result[i].eventStatus, result[i].optState, result[i].marketContext, result[i].vtnComment, result[i].testEvent, result[i].responseRequired, result[i].modificationNumber]]);
+                 }
+
+                 var table = new google.visualization.Table(document.getElementById('eventLog'));
+                 table.draw(data,{shorRowNumber: false, width: '100%', height: '100%'});
+
+                 //call the drawtable() function to update the ven_log
+                 //drawtable();
+
+
+
+
+                 //register the select event for the event log table
+                 google.visualization.events.addListener(table, 'select', selectHandlerEventLogTable);
+
+
+                //register the select event for the event log table
+                //google.visualization.events.addListener(table, 'select', selectHandlerEventLogTable);
+
+
+                function selectHandlerEventLogTable() {
+
+                // get the selected row index: selection[0].row
+                // get the value of the cell (selection[0].row, column)
+                var selection = table.getSelection();
+                var eventID = data.getFormattedValue(selection[0].row, 0);
+
+                //document.getElementById("eventIDforMenu").innerHTML = eventID;
+
+                // set the value of individualOptMenu contains eventID once click on the Event Log table
+                var menuInfo = document.getElementById("individualOptMenu");
+
+                menuInfo[0].eventIDProperty = eventID; // append eventID to the eventIDProperty of the 1st option of individualOptMenu
+                menuInfo[0].text = "Event " + eventID + ": Opt In or Opt Out?"; // update the text for the 1st option of individualOptMenu
+                menuInfo.selectedIndex = 0;
+
+                //alert(menuInfo[0].text);
+
+                //eventIDforMenu = eventID;
+                //alert("You have selected the row: " + eventID);
+                //alert('The user is navigating to table ' + data);
+
+                //use AJAX to get event Active Period info
+                $.ajax({
+                    type: "POST", // this an AJAX POST request
+
+                    // this html is running as http://127.0.0.1:8000/web/gview,
+                    // we want to call the url as http://127.0.0.1:8000/web/mysqlveneventactiveperiod/, so use ../ for parental folder
+                    // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                    // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlveneventactiveperiod/ has been defined to point to function ajax_get_ven_event_active_period() in views.py of VENfront folder
+                    url: "http://127.0.0.1:8000/web/mysqlveneventactiveperiod/",
+
+                    contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                    data: (eventID), // send_data of the AJAX POST request; convert into JSON string
+
+                    dataType: 'json', // this indicate what type of data expected from the Server for the AJAX POST request.
+                                   // If it is json, then the return is a already a json object and dont use JSON.parse() to convert
+                                   // if it is text, then can use JSON.parse() to convert the text to a json object
+
+                    // the result paramater inside the function(result) is indeed the data inside the AJAX response
+                    success: function (result) {
+
+                        //alert("Return venlog in JSON");
+
+                        //var periodidVenLog = result;
+
+
+                        //var jsonObj = JSON.parse(result);
+
+                         //var data = new google.visualization.DataTable();
+
+
+                        // update the event active period info
+                         document.getElementById("eventStartTime").innerHTML = result[0].startTime;
+
+                         document.getElementById("eventDuration").innerHTML = result[0].duration;
+
+                         document.getElementById("eventStartAfter").innerHTML = result[0].startAfter;
+
+                         document.getElementById("eventEiNotification").innerHTML = result[0].eiNotification;
+
+                         document.getElementById("eventEiRampUp").innerHTML = result[0].eiRampUp;
+
+                         document.getElementById("eventEiRecovery").innerHTML = result[0].eiRecovery;
+
+
+                        //use AJAX to get event Signal and Interval info
+                        $.ajax({
+                             type: "POST", // this an AJAX POST request
+
+                             // this html is running as http://127.0.0.1:8000/web/gview,
+                             // we want to call the url as http://127.0.0.1:8000/web/mysqlveneventsignal/, so use ../ for parental folder
+                             // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                             // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlveneventsignal/ has been defined to point to function ajax_get_ven_event_active_period() in views.py of VENfront folder
+                             url: "http://127.0.0.1:8000/web/mysqlveneventsignal/",
+
+                             contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                             data: (eventID), // send_data of the AJAX POST request; convert into JSON string
+
+                             dataType: 'json', // this indicate what type of data expected from the Server for the AJAX POST request.
+                                               // If it is json, then the return is a already a json object and dont use JSON.parse() to convert
+                                               // if it is text, then can use JSON.parse() to convert the text to a json object
+
+                             // the result paramater inside the function(result) is indeed the data inside the AJAX response
+                             success: function (result) {
+
+                                 //alert("Return venlog in JSON");
+
+                                 //var periodidVenLog = result;
+
+
+                                 //var jsonObj = JSON.parse(result);
+
+                                 //var data = new google.visualization.DataTable();
+
+                                 var data = new google.visualization.DataTable();
+                                 //var tabledata = {['d', '3', '5', 'd', '']};
+                                 data.addColumn('string', 'Event ID');
+                                 data.addColumn('string', 'Signal ID');
+                                 data.addColumn('string', 'Signal Name');
+                                 data.addColumn('string', 'Signal Type');
+                                 data.addColumn('string', 'Signal Interval');
+                                 data.addColumn('string', 'UID');
+                                 data.addColumn('string', 'Target Value');
+                                 data.addColumn('string', 'Current Value');
+                                 data.addColumn('string', 'Modification Number');
+                                 //data.addRows([['dd', '2', '3', '41', '21', 'dwea']]);
+
+
+                                 for (i = 0; i < result.length; i++) {
+                                     data.addRows([[result[i].eventID, result[i].signalID, result[i].signalName, result[i].signalType, result[i].signalInterval, result[i].UID, result[i].targetValue, result[i].currentValue, result[i].modificationNumber]]);
+                                 }
+
+                                 var table = new google.visualization.Table(document.getElementById('eventInterval'));
+                                 table.draw(data, {shorRowNumber: false, width: '100%', height: '100%'});
+
+
+                         }
+
+                     });
+
+
+                 }
+
+             });
+
+
+         }
+
+
+
+                 }
+
+           });
+
+
+
+
+    }
+
+
+    function updateVENLogfromDB() {
+
+        $.ajax({
+            type: "POST", // this an AJAX POST request
+
+            // this html is running as http://127.0.0.1:8000/web/gview,
+            // we want to call the url as http://127.0.0.1:8000/web/mysqlvenlog/, so use ../ for parental folder
+            // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+            // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlvenlog/ has been defined to point to function ajax_get_ven_log() in views.py of VENfront folder
+            url: "http://127.0.0.1:8000/web/mysqlvenlog/",
+
+            contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+            data: ("function: get_ven_log"), // send_data of the AJAX POST request; convert into JSON string
+
+            dataType: 'json', // this indicate what type of data expected from the Server for the AJAX POST request.
+                              // If it is json, then the return is a already a json object and dont use JSON.parse() to convert
+                              // if it is text, then can use JSON.parse() to convert the text to a json object
+
+            // the result paramater inside the function(result) is indeed the data inside the AJAX response
+            success: function (result) {
+
+                //alert("Return venlog in JSON");
+
+                //var periodidVenLog = result;
+
+
+                //var jsonObj = JSON.parse(result);
+
+                var data = new google.visualization.DataTable();
+                //var tabledata = {['d', '3', '5', 'd', '']};
+                data.addColumn('string', 'Time Stamp');
+                data.addColumn('string', 'Response Time');
+                data.addColumn('string', 'VEN Request');
+                data.addColumn('string', 'VTN Response');
+                data.addColumn('string', 'Response Code');
+                data.addColumn('string', 'Response Description');
+                //data.addRows([['dd', '2', '3', '41', '21', 'dwea']]);
+
+
+                for (i = 0; i < result.length; i++) {
+                    data.addRows([[result[i].time, result[i].responseTime, result[i].venRequest, result[i].vtnResponse, result[i].responseCode, result[i].responseDescription]]);
+                }
+
+                var table = new google.visualization.Table(document.getElementById('table_div'));
+                table.draw(data, {shorRowNumber: false, width: '100%', height: '100%'});
+
+                //call the drawtable() function to update the ven_log
+                //drawtable();
+
+                //call the updateVENEventfromDB() to update the event_log once ven_log is successfully updated after clicking on OptIn or OptOut for individual event
+                //updateVENEventfromDB();
+
+
+
+
+
+            }
+
+        });
+    }
+
+
+    function updateVENEventfromDB(){
+
+           $.ajax({
+                 type: "POST", // this an AJAX POST request
+
+                 // this html is running as http://127.0.0.1:8000/web/gview,
+                 // we want to call the url as http://127.0.0.1:8000/web/mysqlvenlog/, so use ../ for parental folder
+                 // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                 // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlvenevent/ has been defined to point to function ajax_get_ven_event() in views.py of VENfront folder
+                 url: "http://127.0.0.1:8000/web/mysqlvenevent/",
+
+                 contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                 data: ("function: get_ven_event"), // send_data of the AJAX POST request; convert into JSON string
+
+                 dataType: 'json', // this indicate what type of data expected from the Server for the AJAX POST request.
+                                   // If it is json, then the return is a already a json object and dont use JSON.parse() to convert
+                                   // if it is text, then can use JSON.parse() to convert the text to a json object
+
+                 // the result paramater inside the function(result) is indeed the data inside the AJAX response
+                 success: function(result) {
+
+                 //alert("Return venlog in JSON");
+
+                 //var periodidVenLog = result;
+
+
+                 //var jsonObj = JSON.parse(result);
+
+                 var data = new google.visualization.DataTable();
+                 //var tabledata = {['d', '3', '5', 'd', '']};
+                 data.addColumn('string', 'Event ID');
+                 data.addColumn('string', 'Start Time');
+                 data.addColumn('string', 'Duration');
+                 data.addColumn('string', 'Event Status');
+                 data.addColumn('string', 'Opt State');
+                 data.addColumn('string', 'Market Context');
+                 //data.addColumn('string', 'Signal Type');
+                 //data.addColumn('string', 'Current Value');
+                 data.addColumn('string', 'VTN Comment');
+                 data.addColumn('string', 'Test Event');
+                 data.addColumn('string', 'Response Required');
+                 data.addColumn('string', 'Modification Number');
+                 //data.addRows([['dd', '2', '3', '41', '21', 'dwea']]);
+
+
+                 for (i=0; i<result.length; i++) {
+                     data.addRows([[result[i].eventID, result[i].eventTime, result[i].eventDuration, result[i].eventStatus, result[i].optState, result[i].marketContext, result[i].vtnComment, result[i].testEvent, result[i].responseRequired, result[i].modificationNumber]]);
+                 }
+
+                 var table = new google.visualization.Table(document.getElementById('eventLog'));
+                 table.draw(data,{shorRowNumber: false, width: '100%', height: '100%'});
+
+                 //call the drawtable() function to update the ven_log
+                 //drawtable();
+
+
+
+
+                 //register the select event for the event log table
+                 google.visualization.events.addListener(table, 'select', selectHandlerEventLogTable);
+
+
+                //register the select event for the event log table
+                //google.visualization.events.addListener(table, 'select', selectHandlerEventLogTable);
+
+
+                function selectHandlerEventLogTable() {
+
+                // get the selected row index: selection[0].row
+                // get the value of the cell (selection[0].row, column)
+                var selection = table.getSelection();
+                var eventID = data.getFormattedValue(selection[0].row, 0);
+
+                //document.getElementById("eventIDforMenu").innerHTML = eventID;
+
+                // set the value of individualOptMenu contains eventID once click on the Event Log table
+                var menuInfo = document.getElementById("individualOptMenu");
+
+                menuInfo[0].eventIDProperty = eventID; // append eventID to the eventIDProperty of the 1st option of individualOptMenu
+                menuInfo[0].text = "Event " + eventID + ": Opt In or Opt Out?"; // update the text for the 1st option of individualOptMenu
+                menuInfo.selectedIndex = 0;
+
+                //alert(menuInfo[0].text);
+
+                //eventIDforMenu = eventID;
+                //alert("You have selected the row: " + eventID);
+                //alert('The user is navigating to table ' + data);
+
+                //use AJAX to get event Active Period info
+                $.ajax({
+                    type: "POST", // this an AJAX POST request
+
+                    // this html is running as http://127.0.0.1:8000/web/gview,
+                    // we want to call the url as http://127.0.0.1:8000/web/mysqlveneventactiveperiod/, so use ../ for parental folder
+                    // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                    // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlveneventactiveperiod/ has been defined to point to function ajax_get_ven_event_active_period() in views.py of VENfront folder
+                    url: "http://127.0.0.1:8000/web/mysqlveneventactiveperiod/",
+
+                    contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                    data: (eventID), // send_data of the AJAX POST request; convert into JSON string
+
+                    dataType: 'json', // this indicate what type of data expected from the Server for the AJAX POST request.
+                                   // If it is json, then the return is a already a json object and dont use JSON.parse() to convert
+                                   // if it is text, then can use JSON.parse() to convert the text to a json object
+
+                    // the result paramater inside the function(result) is indeed the data inside the AJAX response
+                    success: function (result) {
+
+                        //alert("Return venlog in JSON");
+
+                        //var periodidVenLog = result;
+
+
+                        //var jsonObj = JSON.parse(result);
+
+                         //var data = new google.visualization.DataTable();
+
+
+                        // update the event active period info
+                         document.getElementById("eventStartTime").innerHTML = result[0].startTime;
+
+                         document.getElementById("eventDuration").innerHTML = result[0].duration;
+
+                         document.getElementById("eventStartAfter").innerHTML = result[0].startAfter;
+
+                         document.getElementById("eventEiNotification").innerHTML = result[0].eiNotification;
+
+                         document.getElementById("eventEiRampUp").innerHTML = result[0].eiRampUp;
+
+                         document.getElementById("eventEiRecovery").innerHTML = result[0].eiRecovery;
+
+
+                        //use AJAX to get event Signal and Interval info
+                        $.ajax({
+                             type: "POST", // this an AJAX POST request
+
+                             // this html is running as http://127.0.0.1:8000/web/gview,
+                             // we want to call the url as http://127.0.0.1:8000/web/mysqlveneventsignal/, so use ../ for parental folder
+                             // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                             // then in urls.py of VENfront folder, http://127.0.0.1:8000/web/mysqlveneventsignal/ has been defined to point to function ajax_get_ven_event_active_period() in views.py of VENfront folder
+                             url: "http://127.0.0.1:8000/web/mysqlveneventsignal/",
+
+                             contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                             data: (eventID), // send_data of the AJAX POST request; convert into JSON string
+
+                             dataType: 'json', // this indicate what type of data expected from the Server for the AJAX POST request.
+                                               // If it is json, then the return is a already a json object and dont use JSON.parse() to convert
+                                               // if it is text, then can use JSON.parse() to convert the text to a json object
+
+                             // the result paramater inside the function(result) is indeed the data inside the AJAX response
+                             success: function (result) {
+
+                                 //alert("Return venlog in JSON");
+
+                                 //var periodidVenLog = result;
+
+
+                                 //var jsonObj = JSON.parse(result);
+
+                                 //var data = new google.visualization.DataTable();
+
+                                 var data = new google.visualization.DataTable();
+                                 //var tabledata = {['d', '3', '5', 'd', '']};
+                                 data.addColumn('string', 'Event ID');
+                                 data.addColumn('string', 'Signal ID');
+                                 data.addColumn('string', 'Signal Name');
+                                 data.addColumn('string', 'Signal Type');
+                                 data.addColumn('string', 'Signal Interval');
+                                 data.addColumn('string', 'UID');
+                                 data.addColumn('string', 'Target Value');
+                                 data.addColumn('string', 'Current Value');
+                                 data.addColumn('string', 'Modification Number');
+                                 //data.addRows([['dd', '2', '3', '41', '21', 'dwea']]);
+
+
+                                 for (i = 0; i < result.length; i++) {
+                                     data.addRows([[result[i].eventID, result[i].signalID, result[i].signalName, result[i].signalType, result[i].signalInterval, result[i].UID, result[i].targetValue, result[i].currentValue, result[i].modificationNumber]]);
+                                 }
+
+                                 var table = new google.visualization.Table(document.getElementById('eventInterval'));
+                                 table.draw(data, {shorRowNumber: false, width: '100%', height: '100%'});
+
+
+                         }
+
+                     });
+
+
+                 }
+
+             });
+
+
+         }
+
+
+
+                 }
+
+           });
+
+
+
+
+    }
+
+
+    function myFunction() {
+
+        alert("You right click inside the div!");
+    }
+
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script> <!-- this is the JQuery API for AJAX -->
+
+    <!-- <script src="file:///VENfront/templates/scripts/http_code.jquery.com_jquery-3.1.0.js"></script> <!-- this is the JQuery API for AJAX -->
+
+    <script>
+
+     //var pythondata;
+     //var pythondata_html;
+     var json_response
+
+     var send_data = {"function":"get_ven_info()"};
+
+     $(document).ready(function() {
+         $("#ajaxbutton").click(function () {
+
+          //pythondata =
+         $.ajax({
+                 type: "POST", // this an AJAX POST request
+
+                 // this html is running as http://127.0.0.1:8000/web/gview,
+                 // we want to call the url as http://127.0.0.1:8000/web/mysqlpython/, so use ../ for parental folder
+                 // in urls.py of myVEN folder, http://127.0.0.1:8000/web has been defined to point to urls.py of VENfront folder
+                 // then in urls.py of VENfront, http://127.0.0.1:8000/web/mysqlpython/ has been defined to point to function ajax_get_ven_info() in views.py of VENfront folder
+                 url: "http://127.0.0.1:8000/web/mysqlveninfo/",
+
+                 contentType: "application/json; charset=utf-8", // type of send_data in the AJAX POST request
+
+                 data: JSON.stringify(send_data), // send_data of the AJAX POST request; convert into JSON string
+
+                 dataType: 'text', // this indicate what type of data expected from the Server for the AJAX POST request
+
+                 // the data paramater inside the function() is indeed the data inside the AJAX response
+                 success: function(result) {
+
+                 alert(result);
+
+                 var obj = JSON.parse(result);
+
+                 alert (obj.venName);
+                 //var pythondata = { {result|safe} };
+                 //alert(pythondata[0][0]);
+
+                  //alert(pythondata_html[0][0]);
+
+                 }
+
+             });
+
+         //var obj = JSON.parse(json_response.responseText);
+         //alert(obj.venName);
+
+
+         });
+     });
+
+    </script>
+
+
+
+
+
+    <style>
+        /* style the tab */
+        .tab {
+            overflow-y: hidden;
+            overflow-x: hidden;
+            border: 1px solid #F5F4F4;
+            background-color: #F5F4F4;
+        }
+
+        /* style the tab_event */
+        .tab_event {
+            overflow-y: hidden;
+            overflow-x: hidden;
+            border: 1px solid #F5F4F4;
+            background-color: #F5F4F4;
+        }
+
+        /* style the tab_record */
+        .tab_record {
+            overflow: hidden;
+            border: 1px solid #F5F4F4;
+            background-color: #F5F4F4;
+        }
+
+        /* style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            /* padding: 14px 16px; */
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+         /* style the buttons inside the tab_event */
+        .tab_event button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            /* padding: 14px 16px; */
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* style the buttons inside the tab_record */
+        .tab_record button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            /* padding: 14px 16px; */
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Change background color of buttons on hover for tab_event */
+        .tab_event button:hover {
+            background-color: #ddd;
+        }
+
+        /* Change background color of buttons on hover for tab_record */
+        .tab_record button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Create an active/current tablink_event class */
+        .tab_event button.active {
+            background-color: #ccc;
+        }
+
+        /* Create an active/current tablink_record class */
+        .tab_record button.active {
+            background-color: #ccc;
+        }
+
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            boader: 1px solid #ccc;
+            border-top: none;
+        }
+
+        /* Style the tab content for event*/
+        .tabcontent_event {
+            display: none;
+            padding: 6px 12px;
+            boader: 1px solid #ccc;
+            border-top: none;
+        }
+
+        /* Style the tab content for record*/
+        .tabcontent_record {
+            display: none;
+            padding: 6px 12px;
+            boader: 1px solid #ccc;
+            border-top: none;
+        }
+
+        /* Style the drop-down button for Opt In and Opt Out choice */
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 6px 12px;
+            border: 1px solid #3498DB;
+            cursor: pointer;
+            width: 500px;
+            height: 63px;
+            font-size: 13pt;
+            align: central;
+        }
+
+        /* Style the drop-down button hover and focus */
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #2980B9;
+        }
+
+        /* Style the drop-down class for the div */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            padding: 6px 12px;
+
+        }
+
+    </style>
+
+  </head>
+
+
+  <h1>VEN Oniline Monitoring & Configuration System</h1>
+  <body>
+   <table class="columns">
+    <tr>
+        <td colspan="2"><div id="header" style="background-color: #F5F4F4; width: 1830px; height: 200px"> <!-- This is the grey background style setting for VEN info -->
+          <table class="columns">
+            <tr>
+                <th width="300" align="left">VEN ID: <font id="venID"></font></th>
+                <th width="300" align="left">VEN Name: <font id="venName"> </font> </th>
+            </tr>
+            <tr>
+                <th width="300" align="left">VTN Name: <font id="vtnID"></font></th>
+                <th width="600" align="left">VTN Server Address: <a href="#" id="vtnURL"></a></th>
+                <!-- <th width="600" align="left">
+                    <button type="button" id="ajaxbutton">call Ajax and Python</button>
+                </th> -->
+            </tr>
+            <tr>
+                <th width="600" align="left">
+                    <form id="defaultOpt">
+                        <body> Default Opt In/Out: </body>
+                      <!-- <input type="checkbox" name="optin" value="In"> Opt-In -->
+                      <!-- <input type="checkbox" name="optin" value="Out"> Opt-Out -->
+                      <!--  <input type="checkbox" name="optin" value="Nan" checked>Manual &nbsp;&nbsp; -->
+
+                        <!-- Place radio in the web GUI for Opt-In and Opt-Out option -->
+                      <!-- <input type="radio" name="optin" value="In"> Opt-In -->
+                      <!-- <input type="radio" name="optout" value="Out"> Opt-Out -->
+                      <input type="radio" name="choiceOfOpt" value="OptIn"> Opt-In
+                      <input type="radio" name="choiceOfOpt" value="OptOut"> Opt-Out
+                      <!-- <input type="submit" value="Submit"> -->
+
+                        <!-- click the button to change the default opt mode -->
+                        <button type="button" onclick="sendOptMode();">Activate Default Opt Mode</button>
+                    </form>
+                </th>
+            </tr>
+            <tr>
+                <!-- &nbsp means a tap space -->
+                <th width="300" align="left"> Poll Interval (in Seconds): <font id="pollFrequency"></font></th>
+            </tr>
+            <tr>
+                <th width="300" align="left"> Current Default Opt Mode: <font id="defaultOptDB"> </font> </th>
+            </tr>
+          </table>
+        </div>
+        </td>
+    </tr>
+    <tr>
+        <!-- <td><div id="header" style="background-color: #F5F4F4; width: 1200px; height: 50px"><h3>Events Calendar</h3></div></td> <!-- this is the Grey box for Events Calendar -->
+        <td>
+            <div class="tab">
+                <button class="tablinks" onclick="openEvents(event, 'eventLog')" id ="defaultOpen"><h3>Events Log</h3></button>
+                <button class="tablinks" onclick="openEvents(event, 'eventCalendar')"><h3>Events Calendar</h3></button>
+            </div>
+        </td>
+        <!-- <td rowspan="1"><div class="tab" id="header" style="background-color: #F5F4F4; width: 600px; height: 80px"><h3>VEN Geo Info</h3></div></td> --> <!-- this is the grey box for Geo Info -->
+        <td rowspan="1">
+            <div id="header" contextmenu="individualEventOptMenu" style="background-color: #F5F4F4; width: 600px; height: 62px; border: 1px solid #F5F4F4"><h3>VEN Geo Info</h3>
+                <menu type="context" id="individualEventOptMenu">
+                    <menuitem label="Opt In"></menuitem>
+                    <menuitem label="Opt Out"></menuitem>
+                </menu>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>  <!-- class="tabcontent" -->
+            <div id="eventLog" class="tabcontent" contextmenu="myMenu" style="background-color: #F5F4F4; width: 1200px; height: 200px">
+                <menu type="context" id="myMenu">
+                    <menuitem label="Opt In"></menuitem>
+                    <menuitem label="Opt Out"></menuitem>
+                </menu>
+            </div> <!-- this is the box for Event log table -->
+            <div id="eventCalendar" class="tabcontent" style="background-color: #F5F4F4; width: 1200px; height: 200px"></div> <!-- this is the box for Event Calendar -->
+        </td>
+        <td rowspan="1"><div id="map" style="background-color: #F5F4F4; width: 600px; height: 200px"></div></td> <!-- this is the box for Google Map -->
+        <script>
+            function initMap(){
+                var VEN = {lat: 55.972, lng: -3.97246};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 17,
+                    center: VEN
+                });
+                var marker = new google.maps.Marker(
+                    {
+                        position: VEN,
+                        map: map
+                    }
+                );
+
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNR620G0hZ8qurN9S389tVPntJKerLgSA&callback=initMap">
+        </script>
+
+    </tr>
+
+    <tr>
+        <td>
+            <div class="tab_event" style="display: inline">
+                <button class="tablinks_event" onclick="openEventDetails(event, 'eventActivePeriod')" id ="defaultOpenEventDetails"><h4>Event: Active Period</h4></button>
+                <button class="tablinks_event" onclick="openEventDetails(event, 'eventInterval')"><h4>Event: Signals, Intervals and Values</h4></button>
+            </div>
+            <div class="dropdown" style="display: inline">
+                <select class="dropbtn" id="individualOptMenu" onchange="selectIndividualOpt(this);"> <!-- onchange means when there is change to the option for example click on the Option, it will call window.test method in the script at the end of the file; this is an Event listener -->
+                    <option value="Eventinfo" eventIDProperty="">Opt In or Opt Out?</option>
+                    <option value="OptIn">Opt In</option>
+                    <option value="OptOut">Opt Out</option>
+                </select>
+            </div>
+        </td>
+
+
+        <td rowspan="1"><div id="header" style="background-color: #F5F4F4; width: 600px; height: 62px; border: 1px solid #F5F4F4"><h3>VEN Message Log</h3></div></td>
+    </tr>
+
+    <tr>
+        <td>
+            <div id="eventActivePeriod" class="tabcontent_event" style="background-color: #F5F4F4; width: 1200px; height: 230px">
+                <p> <b>Start Time:&nbsp</b> <font id="eventStartTime" style="padding: 3px; border: 1px solid #000"></font></p>
+                <p> <b>Duration:&nbsp</b> <font id="eventDuration" style="padding: 3px; border: 1px solid #000"></font></p>
+                <p> <b>Start After:&nbsp</b> <font id="eventStartAfter" style="padding: 3px; border: 1px solid #000"></font></p>
+                <p> <b>eiNotification:&nbsp</b> <font id="eventEiNotification" style="padding: 3px; border: 1px solid #000"></font></p>
+                <p> <b>eiRampUp:&nbsp</b> <font id="eventEiRampUp" style="padding: 3px; border: 1px solid #000"></font></p>
+                <p> <b>eiRecovery:&nbsp</b> <font id="eventEiRecovery" style="padding: 3px; border: 1px solid #000"></font></p>
+            </div> <!-- this is the box for Event log table -->
+            <div id="eventInterval" class="tabcontent_event" style="background-color: #F5F4F4; width: 1200px; height: 230px"></div> <!-- this is the box for Event Calendar -->
+        </td>
+        <td rowspan="3"><div id="table_div" style="background-color: #F5F4F4; width: 600px; height: 720px"></div></td> <!-- this is the box for the VEN log table -->
+    </tr>
+
+
+
+    <tr>
+        <td>
+            <div class="tab_record">
+                <button class="tablinks_record" onclick="openVENRecord(event, 'chart_div')" id ="defaultOpenPower"><h3>Power Record</h3></button>
+                <button class="tablinks_record" onclick="openVENRecord(event, 'barchart')"><h3>Energy Record</h3></button>
+                <!-- <button class="tablinks_record" onclick="openVENRecord(event, 'power_canvas_div')"><h3>Dynamic Power Record</h3></button> -->
+                <!-- <button class="tablinks_record" onclick="openVENRecord(event, 'power_canvas_multiline_div')"><h3>Dynamic Power Record (P and Q)</h3></button> -->
+                <button class="tablinks_record" onclick="openVENRecord(event, 'power_canvas_multiline_v2_div')"><h3>Dynamic Power Record (P and Q)</h3></button>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="chart_div" class="tabcontent_record" style="background-color: #F5F4F4; width: 1200px; height: 400px"></div> <!-- this is the Grey box for VEN Power usage, the line -->
+            <div id="barchart" class="tabcontent_record" style="background-color: #F5F4F4; width: 1200px; height: 400px"></div> <!-- this is the Grey box for VEN Energy usage, the bar chart -->
+            <!-- <div id="power_canvas_div" class="tabcontent_record" style="background-color: #F5F4F4; width: 1200px; height: 400px">
+                <canvas width="1000" height="400" id="power_canvas"></canvas>
+            </div> <!-- this is the Grey box for dynamic VEN Power usage, the single line dynamic plot -->
+
+            <!-- <div id="power_canvas_multiline_div" class="tabcontent_record" style="background-color: #F5F4F4; width: 1200px; height: 400px">
+                <canvas width="1000" height="400" id="power_canvas_multiline"></canvas>
+            </div> <!-- this is the Grey box for dynamic VEN Power usage, the multiple line dynamic plot -->
+
+            <div id="power_canvas_multiline_v2_div" class="tabcontent_record" style="background-color: #F5F4F4; width: 1190px; height: 400px"></div> <!-- this is the Grey box for VEN Energy usage, the multiline dynamic chart V2 -->
+
+        </td>
+    </tr>
+   </table>
+  </body>
+
+
+<script>
+
+    // the first_time_call flag is used to indicate whether it is first time to click on the tab,
+    // if it is first time, then do not call drawtimeline function because google.visualtion lib is not fully loaded;
+    // use the output of google.charts.setOnLoadCallback(drawtimeline); for the first_time_call
+    // if it is not first time, the google.visualtion has been fully loaded and can call drawtimeline() or drawtable_events() without issue
+    var first_time_call = true;
+    var first_time_call_event = true;
+    var first_time_call_record =true;
+
+    function openEvents(evt, eventOption) {
+
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for(i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for(i = 0; i < tabcontent.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(eventOption).style.display = "block";
+        evt.currentTarget.className += " active";
+
+
+        if (eventOption == "eventLog") {
+            if (first_time_call)
+            {
+                first_time_call = false;
+            } else {
+                drawtable_event();
+            }
+        }
+        else if (eventOption == "eventCalendar") {
+            if (first_time_call)
+            {
+                first_time_call = false;
+            } else {
+                drawtimeline();
+            }
+        }
+
+
+
+    }
+
+
+    function openEventDetails(evt, eventOption) {
+
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent_event");
+        for(i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks_event");
+        for(i = 0; i < tabcontent.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(eventOption).style.display = "block";
+        evt.currentTarget.className += " active";
+
+
+        if (eventOption == "eventActivePeriod") {
+            if (first_time_call_event)
+            {
+                first_time_call_event = false;
+            } else {
+                //drawtable_event();
+                //alert("Not first time click on Event: Active Period!!");
+            }
+        }
+        else if (eventOption == "eventInterval") {
+            if (first_time_call_event)
+            {
+                first_time_call_event = false;
+            } else {
+                //drawtable_event_signal();
+                //alert("Not first time click on Event: Interval!!");
+            }
+        }
+
+
+
+    }
+
+
+    function openVENRecord(evt, eventOption) {
+
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent_record" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent_record");
+        for(i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks_record" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks_record");
+        for(i = 0; i < tabcontent.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(eventOption).style.display = "block";
+        evt.currentTarget.className += " active";
+
+
+        if (eventOption == "chart_div") {
+            if (first_time_call_record)
+            {
+                first_time_call_record = false;
+            } else {
+                drawLogScales();
+            }
+        }
+        else if (eventOption == "barchart") {
+            if (first_time_call_record)
+            {
+                first_time_call_record = false;
+            } else {
+                drawbarchart();
+            }
+        }
+        else if (eventOption == "power_canvas_div") {
+            if (first_time_call_record)
+            {
+                first_time_call_record = false;
+            } else {
+                drawpowercanvas();
+            }
+        }
+        else if (eventOption == "power_canvas_multiline_div") {
+            if (first_time_call_record)
+            {
+                first_time_call_record = false;
+            } else {
+                 drawpowercanvasmultilines();
+            }
+        }
+        else if (eventOption == "power_canvas_multiline_v2_div") {
+            if (first_time_call_record)
+            {
+                first_time_call_record = false;
+            } else {
+                 drawpowercanvasmultilinesV2();
+            }
+        }
+
+
+
+    }
+
+    //click on the default tab Events Calendar
+    //drawtimeline();
+    document.getElementById("defaultOpen").click();
+
+    document.getElementById("defaultOpenEventDetails").click();
+
+    document.getElementById("defaultOpenPower").click();
+
+</script>
+
+
+
+
+<script>
+
+    //when page is detected to be unloaded such as close the tab, go to another link
+    //the periodic update will be cleared/cancelled
+
+    window.addEventListener("beforeunload", function (event) {
+
+    //cancel the periodic update of VEN Log
+    clearInterval(myTimerVENLog);
+    clearInterval(myTimerVENEvent);
+
+    //var confirmationMessage = "\o/";
+    //event.returnValue = confirmationMessage; //Gecko + IE
+    //return confirmationMessage;                            //Webkit, Safari, Chrome
+});
+
+
+
+</script>
+
+
+<script>
+
+    function selectIndividualOpt(e) {
+
+            if (e.value == "OptIn") {
+
+                var menuInfo = document.getElementById("individualOptMenu");
+
+                //alert(menuInfo[0].eventIDProperty); //obtain the eventID
+
+                //alert("You have selected Opt In!");
+
+                //use json format for the message content; Note the HTTP Post Request does not use Json type, it only use text/plain; Json cannot be used because of the Cross Domain issues
+                var message = '{"eventID":"' + menuInfo[0].eventIDProperty + '", "individualOptMode":"OptIn"}';
+                //alert(message);
+
+                sendIndividualOptHttpRequest(message);
+
+            }
+            else if (e.value == "OptOut") {
+
+                var menuInfo = document.getElementById("individualOptMenu");
+
+                //alert(menuInfo[0].eventIDProperty); //obtain the eventID
+
+                //alert("You have selected Opt Out!");
+
+                //use json format for the message content; Note the HTTP Post Request does not use Json type, it only use text/plain; Json cannot be used because of the Cross Domain issues
+                var message = '{"eventID":"' + menuInfo[0].eventIDProperty + '", "individualOptMode":"OptOut"}';
+                //alert(message);
+
+                sendIndividualOptHttpRequest(message);
+            }
+
+
+    }
+
+    function sendIndividualOptHttpRequest(message) {
+
+         // define a new XMLHttpRequest
+          var xhr = new XMLHttpRequest();
+
+          // define the type, destination url of the HTTP requests
+          //xhr1.open('POST', "http://192.168.56.201:9080", true); true means asynchronous, false means synchronous;
+          //in real world, the xhr2.open() is triggered and then the program does other tasks and does not need to wait for it --> so use true/asynchronous
+          //xhr2.open('POST', "http://127.0.0.1:9080", true);
+
+          xhr.open('POST', "http://127.0.0.1:9080", true);
+
+          // send the HTTP Post Request with content message, message is plain text but in Json format
+          xhr.send(message);
+
+
+          //listening on the readystatechange event of xhr and execute a specific function processRequest()
+          //readyState has 4 values:
+          // 0: UNSENT
+          // 1: OPENED
+          // 2: HEADERS_RECEIVED
+          // 3: LOADING
+          // 4: DONE
+
+          xhr.addEventListener("readystatechange", processIndividualOptRequest(xhr), true);
+
+          //addEventListener()
+
+          //xhr2.onreadystatechange = processRequest(xhr2);
+
+
+    }
+
+    function processIndividualOptRequest(httpresponse) {
+
+          //var response = JSON.parse(xhr2.responseText);
+          alert("Request receives a response");
+          alert("Request state: " + httpresponse.readyState);
+          alert("Request status: " + httpresponse.status);
+          //alert(httpresponse.responseText);
+
+
+          if ( httpresponse.readyState == 4 && httpresponse.status == 200 ) {
+              //document.getElementById("defaultOptDB").innerHTML = response.responseText;
+              //document.getElementById("defaultOptDB").innerHTML = httpresponse.responseText;
+
+
+              // call updateVENLogfromDB() and updateVENEventfromDB() to update VEN Message log and VEN Event log
+              // once clicking OptIn or OptOut from individual event
+              updateVENLogfromDB();
+
+              updateVENEventfromDB();
+
+          }
+
+              //check the content of the http response
+              //if
+
+
+    }
+
+
+</script>
+
+
+</html>

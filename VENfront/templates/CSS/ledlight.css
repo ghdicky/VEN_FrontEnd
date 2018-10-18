@@ -1,0 +1,58 @@
+@keyframes ledFlash {
+  0% {
+    background-size: 100% 100%;
+  }
+  50% {
+    background-size: 160% 160%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+body {
+  background: #000;
+  padding: 10px;
+}
+
+div {
+  float: left;
+  margin-left: 15px;
+}
+
+ul {
+  display: block;
+  float: left;
+}
+
+ul li {
+  margin: 2px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+ul .bulb {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: transparent;
+  background: -moz-radial-gradient(center, ellipse cover, rgba(195, 255, 0, 1) 0%, rgba(41, 154, 11, 0) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(195, 255, 0, 1)), color-stop(100%, rgba(41, 154, 11, 0)));
+  /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(195, 255, 0, 1) 0%, rgba(41, 154, 11, 0) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, rgba(195, 255, 0, 1) 0%, rgba(41, 154, 11, 0) 100%);
+  /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, rgba(195, 255, 0, 1) 0%, rgba(41, 154, 11, 0) 100%);
+  /* IE10+ */
+  background: radial-gradient(ellipse at center, rgba(195, 255, 0, 1) 0%, rgba(41, 154, 11, 0) 100%);
+  /* W3C */
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#c3ff00', endColorstr='#00299a0b', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+  background-position: center center;
+  background-repeat: repeat;
+  background-size: 100% 100%;
+  animation: ledFlash 1.5s infinite;
+}
