@@ -1,0 +1,1388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ac6e290b-8160-42ef-a781-030d58312193" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/myVEN$models.coverage" NAME="models Coverage Results" MODIFIED="1532943079802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/VENfront" />
+    <SUITE FILE_PATH="coverage/myVEN$mysqldb.coverage" NAME="mysqldb Coverage Results" MODIFIED="1543346510704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/VENfront" />
+    <SUITE FILE_PATH="coverage/myVEN$Test__VENfront_templates_test_html.coverage" NAME="Test: VENfront.templates.test.html Coverage Results" MODIFIED="1531857645758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Django default" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myVEN/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#638#1" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="d3view.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/VENfront/templates/d3view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="1930" column="42" lean-forward="false" selection-start-line="1930" selection-start-column="42" selection-end-line="1930" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VENfront/templates/test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ledlight.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VENfront/templates/CSS/ledlight.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysqldb.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VENfront/mysqldb.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+                <marker date="1543345821806" expanded="true" signature="631:772" ph="select DATE(... " />
+                <marker date="1543345821806" expanded="true" signature="1738:1811" ph="select dtsta... venpower" />
+                <marker date="1543345821806" expanded="true" signature="2776:2898" ph="select event... eventinfo" />
+                <marker date="1543345821806" expanded="true" signature="4349:4425" ph="select * fro... venlog" />
+                <marker date="1543345821806" expanded="true" signature="4470:4638" ph="select dtsta... venlog" />
+                <marker date="1543345821806" expanded="true" signature="4470:4643" ph="select dtsta... venlog" />
+                <marker date="1543345821806" expanded="true" signature="5521:5607" ph="select * fro... veninfo" />
+                <marker date="1543345821806" expanded="true" signature="6400:6458" ph="select defau... vendefaultopt" />
+                <marker date="1543345821806" expanded="true" signature="7330:7558" ph="select event... eventinfo" />
+                <marker date="1543345821806" expanded="true" signature="7330:7579" ph="select event... venlog" />
+                <marker date="1543345821806" expanded="true" signature="8869:9015" ph="select signa... eventsignal" />
+                <marker date="1543345821806" expanded="true" signature="10276:10389" ph="select start... eventinfo" />
+                <marker date="1543345821806" expanded="true" signature="11480:11522" ph="select P, Q substaion" />
+                <marker date="1543345821806" expanded="true" signature="11480:11543" ph="select dtsta... substaion" />
+                <marker date="1543345821806" expanded="true" signature="11480:11551" ph="select dtsta... substation" />
+                <marker date="1543345821806" expanded="true" signature="12501:12569" ph="select dtsta... house21" />
+                <marker date="1543345821806" expanded="true" signature="13582:13668" ph="select dtsta... house21" />
+                <marker date="1543345821806" expanded="true" signature="13880:13966" ph="select dtsta... house22" />
+                <marker date="1543345821806" expanded="true" signature="14178:14264" ph="select dtsta... house23" />
+                <marker date="1543345821806" expanded="true" signature="14476:14562" ph="select dtsta... house24" />
+                <marker date="1543345821806" expanded="true" signature="14774:14860" ph="select dtsta... house25" />
+                <marker date="1543345821806" expanded="true" signature="15072:15158" ph="select dtsta... house26" />
+                <marker date="1543345821806" expanded="true" signature="15370:15456" ph="select dtsta... house27" />
+                <marker date="1543345821806" expanded="true" signature="15668:15754" ph="select dtsta... house28" />
+                <marker date="1543345821806" expanded="true" signature="15966:16052" ph="select dtsta... house29" />
+                <marker date="1543345821806" expanded="true" signature="16264:16350" ph="select dtsta... house30" />
+                <marker date="1543345821806" expanded="true" signature="16562:16648" ph="select dtsta... house31" />
+                <marker date="1543345821806" expanded="true" signature="16860:16946" ph="select dtsta... house48" />
+                <marker date="1543345821806" expanded="true" signature="17158:17244" ph="select dtsta... house49" />
+                <marker date="1543345821806" expanded="true" signature="17456:17542" ph="select dtsta... house50" />
+                <marker date="1543345821806" expanded="true" signature="17754:17840" ph="select dtsta... house51" />
+                <marker date="1543345821806" expanded="true" signature="18052:18138" ph="select dtsta... house52" />
+                <marker date="1543345821806" expanded="true" signature="18350:18436" ph="select dtsta... house53" />
+                <marker date="1543345821806" expanded="true" signature="18648:18734" ph="select dtsta... house54" />
+                <marker date="1543345821806" expanded="true" signature="18946:19032" ph="select dtsta... house55" />
+                <marker date="1543345821806" expanded="true" signature="19244:19330" ph="select dtsta... house56" />
+                <marker date="1543345821806" expanded="true" signature="19542:19628" ph="select dtsta... house57" />
+                <marker date="1543345821806" expanded="true" signature="19840:19926" ph="select dtsta... house59" />
+                <marker date="1543345821806" expanded="true" signature="20138:20224" ph="select dtsta... house60" />
+                <marker date="1543345821806" expanded="true" signature="20436:20522" ph="select dtsta... house61" />
+                <marker date="1543345821806" expanded="true" signature="20734:20820" ph="select dtsta... house62" />
+                <marker date="1543345821806" expanded="true" signature="21032:21118" ph="select dtsta... house63" />
+                <marker date="1543345821806" expanded="true" signature="21330:21416" ph="select dtsta... house64" />
+                <marker date="1543345821806" expanded="true" signature="21628:21714" ph="select dtsta... house65" />
+                <marker date="1543345821806" expanded="true" signature="21926:22012" ph="select dtsta... house66" />
+                <marker date="1543345821806" expanded="true" signature="22224:22310" ph="select dtsta... house67" />
+                <marker date="1543345821806" expanded="true" signature="22522:22608" ph="select dtsta... house68" />
+                <marker date="1543345821806" expanded="true" signature="22820:22906" ph="select dtsta... house69" />
+                <marker date="1543345821806" expanded="true" signature="23118:23204" ph="select dtsta... house70" />
+                <marker date="1543345821806" expanded="true" signature="23416:23504" ph="select dtsta... section42" />
+                <marker date="1543345821806" expanded="true" signature="23718:23806" ph="select dtsta... section43" />
+                <marker date="1543345821806" expanded="true" signature="24020:24108" ph="select dtsta... section44" />
+                <marker date="1543345821806" expanded="true" signature="24322:24410" ph="select dtsta... section45" />
+                <marker date="1543345821806" expanded="true" signature="24624:24712" ph="select dtsta... section46" />
+                <marker date="1543345821806" expanded="true" signature="24926:25014" ph="select dtsta... section47" />
+                <marker date="1543345821806" expanded="true" signature="25228:25317" ph="select dtsta... section47B" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myVEN/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1755">
+              <caret line="117" column="22" lean-forward="false" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VENfront/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="19" column="127" lean-forward="false" selection-start-line="19" selection-start-column="127" selection-end-line="19" selection-end-column="127" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VENfront/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+              <folding>
+                <element signature="e#24#63#0" expanded="true" />
+                <marker date="1543345038575" expanded="true" signature="1023:1071" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>.column</find>
+      <find>column</find>
+      <find>col</find>
+      <find>document.getElementById(&quot;individualOptMenu&quot;</find>
+      <find>defaultOpt</find>
+      <find>defaultOptDB</find>
+      <find>Opt in or</find>
+      <find>individualoptmen</find>
+      <find>click</find>
+      <find>ajax</find>
+      <find>option</find>
+      <find>httprequest</find>
+      <find>message</find>
+      <find>xhr.addEventListener(&quot;readystatechange&quot;, processRequest(xhr), true);</find>
+      <find>Optin</find>
+      <find>readystatech</find>
+      <find>setinter</find>
+      <find>mytimer</find>
+      <find>d3</find>
+      <find>600</find>
+      <find>300</find>
+      <find>60</find>
+      <find>eventcal</find>
+      <find>periodic</find>
+      <find>alert</find>
+      <find>dynamic</find>
+      <find>eventInterval</find>
+      <find>mysqlgtnet1recordallhouses</find>
+      <find>haoguo</find>
+      <find>gtnet1</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/VENfront/models.py" />
+        <option value="$PROJECT_DIR$/VENfront/templates/mysqldb.py" />
+        <option value="$PROJECT_DIR$/VENfront/templates/CSS/ledlight.css" />
+        <option value="$PROJECT_DIR$/VENfront/templates/test.html" />
+        <option value="$PROJECT_DIR$/myVEN/urls.py" />
+        <option value="$PROJECT_DIR$/VENfront/templates/scripts/google_charts_loader.js" />
+        <option value="$PROJECT_DIR$/myVEN/settings.py" />
+        <option value="$PROJECT_DIR$/VENfront/urls.py" />
+        <option value="$PROJECT_DIR$/VENfront/views.py" />
+        <option value="$PROJECT_DIR$/VENfront/mysqldb.py" />
+        <option value="$PROJECT_DIR$/VENfront/templates/d3view.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1535" />
+    <option name="height" value="771" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myVEN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myVEN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jquery-3.1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myVEN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myVEN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myVEN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myVEN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myVEN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myVEN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myVEN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myVEN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VENfront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="nodejs.protractor.protractor_package" value="" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/VENfront/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/VENfront/templates/scripts" />
+      <recent name="C:\Users\wkb16122\Dropbox\drango\myVEN\VENfront" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django server.myVEN">
+    <configuration default="false" name="Test: VENfront.templates.test.html" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="VENfront.templates.test.html" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="false" name="mysqldb" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VENfront" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VENfront/mysqldb.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="models" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VENfront" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VENfront/models.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ChromiumRemoteDebugType" factoryName="Chromium Remote">
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FirefoxRemoteDebugType" factoryName="Firefox Remote">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeWebKit" factoryName="NW.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Python.AppEngineServer" factoryName="App Engine server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="host" value="127.0.0.1" />
+      <option name="browserUrl" value="" />
+      <option name="additionalOptions" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ReactNative" factoryName="React Native">
+      <node-interpreter value="project" />
+      <platform value="ANDROID" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <module name="myVEN" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="myVEN" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="myVEN.settings" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python2.7" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="myVEN" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:8000/web/gview" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Django server.myVEN" />
+      <item index="1" class="java.lang.String" itemvalue="Django tests.Test: VENfront.templates.test.html" />
+      <item index="2" class="java.lang.String" itemvalue="Python.mysqldb" />
+      <item index="3" class="java.lang.String" itemvalue="Python.models" />
+    </list>
+    <recent_temporary>
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.mysqldb" />
+        <item index="1" class="java.lang.String" itemvalue="Python.models" />
+        <item index="2" class="java.lang.String" itemvalue="Django tests.Test: VENfront.templates.test.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ac6e290b-8160-42ef-a781-030d58312193" name="Default" comment="" />
+      <created>1503648959355</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1503648959355</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Test__VENfront_templates_test_html - 2017.08.28 at 12h 04m 36s.xml">
+      <configuration name="Test: VENfront.templates.test.html" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__VENfront_templates_test_html - 2017.08.28 at 12h 04m 54s.xml">
+      <configuration name="Test: VENfront.templates.test.html" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__VENfront_templates_test_html - 2017.08.28 at 12h 05m 29s.xml">
+      <configuration name="Test: VENfront.templates.test.html" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__VENfront_templates_test_html - 2018.07.17 at 21h 00m 46s.xml">
+      <configuration name="Test: VENfront.templates.test.html" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="65" y="24" width="1535" height="771" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24885994" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28939828" sideWeight="0.390228" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16677524" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.49574015" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32711306" sideWeight="0.48935038" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29083094" sideWeight="0.60977197" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.49574015" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="manage.py@myVEN" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997722" sideWeight="0.49811321" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="17" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/VENfront/templates/d3view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1296">
+          <caret line="72" column="40" lean-forward="true" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myVEN/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#638#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myVEN/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="954">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/mysqldb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="31" column="12" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1543345821806" expanded="true" signature="631:772" ph="select DATE(... " />
+            <marker date="1543345821806" expanded="true" signature="1738:1811" ph="select dtsta... venpower" />
+            <marker date="1543345821806" expanded="true" signature="2776:2898" ph="select event... eventinfo" />
+            <marker date="1543345821806" expanded="true" signature="4349:4425" ph="select * fro... venlog" />
+            <marker date="1543345821806" expanded="true" signature="4470:4638" ph="select dtsta... venlog" />
+            <marker date="1543345821806" expanded="true" signature="4470:4643" ph="select dtsta... venlog" />
+            <marker date="1543345821806" expanded="true" signature="5521:5607" ph="select * fro... veninfo" />
+            <marker date="1543345821806" expanded="true" signature="6400:6458" ph="select defau... vendefaultopt" />
+            <marker date="1543345821806" expanded="true" signature="7330:7558" ph="select event... eventinfo" />
+            <marker date="1543345821806" expanded="true" signature="7330:7579" ph="select event... venlog" />
+            <marker date="1543345821806" expanded="true" signature="8869:9015" ph="select signa... eventsignal" />
+            <marker date="1543345821806" expanded="true" signature="10276:10389" ph="select start... eventinfo" />
+            <marker date="1543345821806" expanded="true" signature="11480:11522" ph="select P, Q substaion" />
+            <marker date="1543345821806" expanded="true" signature="11480:11543" ph="select dtsta... substaion" />
+            <marker date="1543345821806" expanded="true" signature="11480:11551" ph="select dtsta... substation" />
+            <marker date="1543345821806" expanded="true" signature="12501:12569" ph="select dtsta... house21" />
+            <marker date="1543345821806" expanded="true" signature="13582:13668" ph="select dtsta... house21" />
+            <marker date="1543345821806" expanded="true" signature="13880:13966" ph="select dtsta... house22" />
+            <marker date="1543345821806" expanded="true" signature="14178:14264" ph="select dtsta... house23" />
+            <marker date="1543345821806" expanded="true" signature="14476:14562" ph="select dtsta... house24" />
+            <marker date="1543345821806" expanded="true" signature="14774:14860" ph="select dtsta... house25" />
+            <marker date="1543345821806" expanded="true" signature="15072:15158" ph="select dtsta... house26" />
+            <marker date="1543345821806" expanded="true" signature="15370:15456" ph="select dtsta... house27" />
+            <marker date="1543345821806" expanded="true" signature="15668:15754" ph="select dtsta... house28" />
+            <marker date="1543345821806" expanded="true" signature="15966:16052" ph="select dtsta... house29" />
+            <marker date="1543345821806" expanded="true" signature="16264:16350" ph="select dtsta... house30" />
+            <marker date="1543345821806" expanded="true" signature="16562:16648" ph="select dtsta... house31" />
+            <marker date="1543345821806" expanded="true" signature="16860:16946" ph="select dtsta... house48" />
+            <marker date="1543345821806" expanded="true" signature="17158:17244" ph="select dtsta... house49" />
+            <marker date="1543345821806" expanded="true" signature="17456:17542" ph="select dtsta... house50" />
+            <marker date="1543345821806" expanded="true" signature="17754:17840" ph="select dtsta... house51" />
+            <marker date="1543345821806" expanded="true" signature="18052:18138" ph="select dtsta... house52" />
+            <marker date="1543345821806" expanded="true" signature="18350:18436" ph="select dtsta... house53" />
+            <marker date="1543345821806" expanded="true" signature="18648:18734" ph="select dtsta... house54" />
+            <marker date="1543345821806" expanded="true" signature="18946:19032" ph="select dtsta... house55" />
+            <marker date="1543345821806" expanded="true" signature="19244:19330" ph="select dtsta... house56" />
+            <marker date="1543345821806" expanded="true" signature="19542:19628" ph="select dtsta... house57" />
+            <marker date="1543345821806" expanded="true" signature="19840:19926" ph="select dtsta... house59" />
+            <marker date="1543345821806" expanded="true" signature="20138:20224" ph="select dtsta... house60" />
+            <marker date="1543345821806" expanded="true" signature="20436:20522" ph="select dtsta... house61" />
+            <marker date="1543345821806" expanded="true" signature="20734:20820" ph="select dtsta... house62" />
+            <marker date="1543345821806" expanded="true" signature="21032:21118" ph="select dtsta... house63" />
+            <marker date="1543345821806" expanded="true" signature="21330:21416" ph="select dtsta... house64" />
+            <marker date="1543345821806" expanded="true" signature="21628:21714" ph="select dtsta... house65" />
+            <marker date="1543345821806" expanded="true" signature="21926:22012" ph="select dtsta... house66" />
+            <marker date="1543345821806" expanded="true" signature="22224:22310" ph="select dtsta... house67" />
+            <marker date="1543345821806" expanded="true" signature="22522:22608" ph="select dtsta... house68" />
+            <marker date="1543345821806" expanded="true" signature="22820:22906" ph="select dtsta... house69" />
+            <marker date="1543345821806" expanded="true" signature="23118:23204" ph="select dtsta... house70" />
+            <marker date="1543345821806" expanded="true" signature="23416:23504" ph="select dtsta... section42" />
+            <marker date="1543345821806" expanded="true" signature="23718:23806" ph="select dtsta... section43" />
+            <marker date="1543345821806" expanded="true" signature="24020:24108" ph="select dtsta... section44" />
+            <marker date="1543345821806" expanded="true" signature="24322:24410" ph="select dtsta... section45" />
+            <marker date="1543345821806" expanded="true" signature="24624:24712" ph="select dtsta... section46" />
+            <marker date="1543345821806" expanded="true" signature="24926:25014" ph="select dtsta... section47" />
+            <marker date="1543345821806" expanded="true" signature="25228:25317" ph="select dtsta... section47B" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="19" column="66" lean-forward="false" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+            <marker date="1543345038575" expanded="true" signature="1023:1071" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/templates/d3view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myVEN/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#638#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myVEN/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1007">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/mysqldb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="31" column="12" lean-forward="true" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1543345821806" expanded="true" signature="631:772" ph="select DATE(... " />
+            <marker date="1543345821806" expanded="true" signature="1738:1811" ph="select dtsta... venpower" />
+            <marker date="1543345821806" expanded="true" signature="2776:2898" ph="select event... eventinfo" />
+            <marker date="1543345821806" expanded="true" signature="4349:4425" ph="select * fro... venlog" />
+            <marker date="1543345821806" expanded="true" signature="4470:4638" ph="select dtsta... venlog" />
+            <marker date="1543345821806" expanded="true" signature="4470:4643" ph="select dtsta... venlog" />
+            <marker date="1543345821806" expanded="true" signature="5521:5607" ph="select * fro... veninfo" />
+            <marker date="1543345821806" expanded="true" signature="6400:6458" ph="select defau... vendefaultopt" />
+            <marker date="1543345821806" expanded="true" signature="7330:7558" ph="select event... eventinfo" />
+            <marker date="1543345821806" expanded="true" signature="7330:7579" ph="select event... venlog" />
+            <marker date="1543345821806" expanded="true" signature="8869:9015" ph="select signa... eventsignal" />
+            <marker date="1543345821806" expanded="true" signature="10276:10389" ph="select start... eventinfo" />
+            <marker date="1543345821806" expanded="true" signature="11480:11522" ph="select P, Q substaion" />
+            <marker date="1543345821806" expanded="true" signature="11480:11543" ph="select dtsta... substaion" />
+            <marker date="1543345821806" expanded="true" signature="11480:11551" ph="select dtsta... substation" />
+            <marker date="1543345821806" expanded="true" signature="12501:12569" ph="select dtsta... house21" />
+            <marker date="1543345821806" expanded="true" signature="13582:13668" ph="select dtsta... house21" />
+            <marker date="1543345821806" expanded="true" signature="13880:13966" ph="select dtsta... house22" />
+            <marker date="1543345821806" expanded="true" signature="14178:14264" ph="select dtsta... house23" />
+            <marker date="1543345821806" expanded="true" signature="14476:14562" ph="select dtsta... house24" />
+            <marker date="1543345821806" expanded="true" signature="14774:14860" ph="select dtsta... house25" />
+            <marker date="1543345821806" expanded="true" signature="15072:15158" ph="select dtsta... house26" />
+            <marker date="1543345821806" expanded="true" signature="15370:15456" ph="select dtsta... house27" />
+            <marker date="1543345821806" expanded="true" signature="15668:15754" ph="select dtsta... house28" />
+            <marker date="1543345821806" expanded="true" signature="15966:16052" ph="select dtsta... house29" />
+            <marker date="1543345821806" expanded="true" signature="16264:16350" ph="select dtsta... house30" />
+            <marker date="1543345821806" expanded="true" signature="16562:16648" ph="select dtsta... house31" />
+            <marker date="1543345821806" expanded="true" signature="16860:16946" ph="select dtsta... house48" />
+            <marker date="1543345821806" expanded="true" signature="17158:17244" ph="select dtsta... house49" />
+            <marker date="1543345821806" expanded="true" signature="17456:17542" ph="select dtsta... house50" />
+            <marker date="1543345821806" expanded="true" signature="17754:17840" ph="select dtsta... house51" />
+            <marker date="1543345821806" expanded="true" signature="18052:18138" ph="select dtsta... house52" />
+            <marker date="1543345821806" expanded="true" signature="18350:18436" ph="select dtsta... house53" />
+            <marker date="1543345821806" expanded="true" signature="18648:18734" ph="select dtsta... house54" />
+            <marker date="1543345821806" expanded="true" signature="18946:19032" ph="select dtsta... house55" />
+            <marker date="1543345821806" expanded="true" signature="19244:19330" ph="select dtsta... house56" />
+            <marker date="1543345821806" expanded="true" signature="19542:19628" ph="select dtsta... house57" />
+            <marker date="1543345821806" expanded="true" signature="19840:19926" ph="select dtsta... house59" />
+            <marker date="1543345821806" expanded="true" signature="20138:20224" ph="select dtsta... house60" />
+            <marker date="1543345821806" expanded="true" signature="20436:20522" ph="select dtsta... house61" />
+            <marker date="1543345821806" expanded="true" signature="20734:20820" ph="select dtsta... house62" />
+            <marker date="1543345821806" expanded="true" signature="21032:21118" ph="select dtsta... house63" />
+            <marker date="1543345821806" expanded="true" signature="21330:21416" ph="select dtsta... house64" />
+            <marker date="1543345821806" expanded="true" signature="21628:21714" ph="select dtsta... house65" />
+            <marker date="1543345821806" expanded="true" signature="21926:22012" ph="select dtsta... house66" />
+            <marker date="1543345821806" expanded="true" signature="22224:22310" ph="select dtsta... house67" />
+            <marker date="1543345821806" expanded="true" signature="22522:22608" ph="select dtsta... house68" />
+            <marker date="1543345821806" expanded="true" signature="22820:22906" ph="select dtsta... house69" />
+            <marker date="1543345821806" expanded="true" signature="23118:23204" ph="select dtsta... house70" />
+            <marker date="1543345821806" expanded="true" signature="23416:23504" ph="select dtsta... section42" />
+            <marker date="1543345821806" expanded="true" signature="23718:23806" ph="select dtsta... section43" />
+            <marker date="1543345821806" expanded="true" signature="24020:24108" ph="select dtsta... section44" />
+            <marker date="1543345821806" expanded="true" signature="24322:24410" ph="select dtsta... section45" />
+            <marker date="1543345821806" expanded="true" signature="24624:24712" ph="select dtsta... section46" />
+            <marker date="1543345821806" expanded="true" signature="24926:25014" ph="select dtsta... section47" />
+            <marker date="1543345821806" expanded="true" signature="25228:25317" ph="select dtsta... section47B" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="19" column="66" lean-forward="false" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+            <marker date="1543345038575" expanded="true" signature="1023:1071" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/templates/d3view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/37c80847/43ce8b99-ba34-4e2a-af4d-54b345d7358f/main.VENfront_veninfo" />
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/37c80847/43ce8b99-ba34-4e2a-af4d-54b345d7358f/main.django_admin_log" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/bc04c6d8-269c-418a-a712-e9322ff33086/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myVEN/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myVEN/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_www.gstatic.com_charts_loader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="25" column="42" lean-forward="false" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/templates/scripts/http_code.jquery.com_jquery-3.1.0.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/applications.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="319" column="16" lean-forward="false" selection-start-line="319" selection-start-column="16" selection-end-line="319" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/templates/scripts/http_www.gstatic.com_charts_loader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="98" column="512" lean-forward="false" selection-start-line="98" selection-start-column="512" selection-end-line="98" selection-end-column="512" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="124" column="18" lean-forward="false" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/templates/scripts/google_charts_loader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="52" lean-forward="false" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/AJAX.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="95" column="56" lean-forward="false" selection-start-line="95" selection-start-column="56" selection-end-line="95" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/SocketServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="154" column="17" lean-forward="true" selection-start-line="154" selection-start-column="17" selection-end-line="154" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/utils/autoreload.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="286" column="52" lean-forward="true" selection-start-line="286" selection-start-column="52" selection-end-line="286" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="1339" column="0" lean-forward="false" selection-start-line="1339" selection-start-column="0" selection-end-line="1339" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/templates/CSS/ledlight.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myVEN/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1755">
+          <caret line="117" column="22" lean-forward="false" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myVEN/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#638#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/templates/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="127" lean-forward="false" selection-start-line="19" selection-start-column="127" selection-end-line="19" selection-end-column="127" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+            <marker date="1543345038575" expanded="true" signature="1023:1071" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/mysqldb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1543345821806" expanded="true" signature="631:772" ph="select DATE(... " />
+            <marker date="1543345821806" expanded="true" signature="1738:1811" ph="select dtsta... venpower" />
+            <marker date="1543345821806" expanded="true" signature="2776:2898" ph="select event... eventinfo" />
+            <marker date="1543345821806" expanded="true" signature="4349:4425" ph="select * fro... venlog" />
+            <marker date="1543345821806" expanded="true" signature="4470:4638" ph="select dtsta... venlog" />
+            <marker date="1543345821806" expanded="true" signature="4470:4643" ph="select dtsta... venlog" />
+            <marker date="1543345821806" expanded="true" signature="5521:5607" ph="select * fro... veninfo" />
+            <marker date="1543345821806" expanded="true" signature="6400:6458" ph="select defau... vendefaultopt" />
+            <marker date="1543345821806" expanded="true" signature="7330:7558" ph="select event... eventinfo" />
+            <marker date="1543345821806" expanded="true" signature="7330:7579" ph="select event... venlog" />
+            <marker date="1543345821806" expanded="true" signature="8869:9015" ph="select signa... eventsignal" />
+            <marker date="1543345821806" expanded="true" signature="10276:10389" ph="select start... eventinfo" />
+            <marker date="1543345821806" expanded="true" signature="11480:11522" ph="select P, Q substaion" />
+            <marker date="1543345821806" expanded="true" signature="11480:11543" ph="select dtsta... substaion" />
+            <marker date="1543345821806" expanded="true" signature="11480:11551" ph="select dtsta... substation" />
+            <marker date="1543345821806" expanded="true" signature="12501:12569" ph="select dtsta... house21" />
+            <marker date="1543345821806" expanded="true" signature="13582:13668" ph="select dtsta... house21" />
+            <marker date="1543345821806" expanded="true" signature="13880:13966" ph="select dtsta... house22" />
+            <marker date="1543345821806" expanded="true" signature="14178:14264" ph="select dtsta... house23" />
+            <marker date="1543345821806" expanded="true" signature="14476:14562" ph="select dtsta... house24" />
+            <marker date="1543345821806" expanded="true" signature="14774:14860" ph="select dtsta... house25" />
+            <marker date="1543345821806" expanded="true" signature="15072:15158" ph="select dtsta... house26" />
+            <marker date="1543345821806" expanded="true" signature="15370:15456" ph="select dtsta... house27" />
+            <marker date="1543345821806" expanded="true" signature="15668:15754" ph="select dtsta... house28" />
+            <marker date="1543345821806" expanded="true" signature="15966:16052" ph="select dtsta... house29" />
+            <marker date="1543345821806" expanded="true" signature="16264:16350" ph="select dtsta... house30" />
+            <marker date="1543345821806" expanded="true" signature="16562:16648" ph="select dtsta... house31" />
+            <marker date="1543345821806" expanded="true" signature="16860:16946" ph="select dtsta... house48" />
+            <marker date="1543345821806" expanded="true" signature="17158:17244" ph="select dtsta... house49" />
+            <marker date="1543345821806" expanded="true" signature="17456:17542" ph="select dtsta... house50" />
+            <marker date="1543345821806" expanded="true" signature="17754:17840" ph="select dtsta... house51" />
+            <marker date="1543345821806" expanded="true" signature="18052:18138" ph="select dtsta... house52" />
+            <marker date="1543345821806" expanded="true" signature="18350:18436" ph="select dtsta... house53" />
+            <marker date="1543345821806" expanded="true" signature="18648:18734" ph="select dtsta... house54" />
+            <marker date="1543345821806" expanded="true" signature="18946:19032" ph="select dtsta... house55" />
+            <marker date="1543345821806" expanded="true" signature="19244:19330" ph="select dtsta... house56" />
+            <marker date="1543345821806" expanded="true" signature="19542:19628" ph="select dtsta... house57" />
+            <marker date="1543345821806" expanded="true" signature="19840:19926" ph="select dtsta... house59" />
+            <marker date="1543345821806" expanded="true" signature="20138:20224" ph="select dtsta... house60" />
+            <marker date="1543345821806" expanded="true" signature="20436:20522" ph="select dtsta... house61" />
+            <marker date="1543345821806" expanded="true" signature="20734:20820" ph="select dtsta... house62" />
+            <marker date="1543345821806" expanded="true" signature="21032:21118" ph="select dtsta... house63" />
+            <marker date="1543345821806" expanded="true" signature="21330:21416" ph="select dtsta... house64" />
+            <marker date="1543345821806" expanded="true" signature="21628:21714" ph="select dtsta... house65" />
+            <marker date="1543345821806" expanded="true" signature="21926:22012" ph="select dtsta... house66" />
+            <marker date="1543345821806" expanded="true" signature="22224:22310" ph="select dtsta... house67" />
+            <marker date="1543345821806" expanded="true" signature="22522:22608" ph="select dtsta... house68" />
+            <marker date="1543345821806" expanded="true" signature="22820:22906" ph="select dtsta... house69" />
+            <marker date="1543345821806" expanded="true" signature="23118:23204" ph="select dtsta... house70" />
+            <marker date="1543345821806" expanded="true" signature="23416:23504" ph="select dtsta... section42" />
+            <marker date="1543345821806" expanded="true" signature="23718:23806" ph="select dtsta... section43" />
+            <marker date="1543345821806" expanded="true" signature="24020:24108" ph="select dtsta... section44" />
+            <marker date="1543345821806" expanded="true" signature="24322:24410" ph="select dtsta... section45" />
+            <marker date="1543345821806" expanded="true" signature="24624:24712" ph="select dtsta... section46" />
+            <marker date="1543345821806" expanded="true" signature="24926:25014" ph="select dtsta... section47" />
+            <marker date="1543345821806" expanded="true" signature="25228:25317" ph="select dtsta... section47B" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VENfront/templates/d3view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="1930" column="42" lean-forward="false" selection-start-line="1930" selection-start-column="42" selection-end-line="1930" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

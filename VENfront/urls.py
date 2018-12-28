@@ -15,6 +15,9 @@ urlpatterns = [
     url(r'^mysqlvenevent/$', views.ajax_get_ven_event), #link the view for calling ajax_get_ven_event in views.py
     url(r'^mysqlveneventactiveperiod/$', views.ajax_get_ven_event_active_period), #link the view for calling ajax_get_ven_event_active_period in views.py
     url(r'^mysqlveneventsignal/$', views.ajax_get_ven_event_signal), #link the view for calling ajax_get_ven_event_signal in views.py
+    url(r'^mysqlgtnet1recordsubstation/$', views.ajax_get_gtnet1_record_substation), #link the view for for calling ajax_get_gtnet1_record_substation in views.py
+    url(r'^mysqlgtnet1recordhouse21/$', views.ajax_get_gtnet1_record_house21), #link the view for for calling ajax_get_gtnet1_record_house21 in views.py
+    url(r'^mysqlgtnetrecordallhouses/$', views.ajax_get_gtnet_record_all_houses), #link the view for for calling ajax_get_gtnet_record_all_houses in views.py
     # link the view for calling ajax_get_defaultoptmode in views.py
 
 ]

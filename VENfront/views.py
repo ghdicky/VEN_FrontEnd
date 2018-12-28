@@ -32,10 +32,12 @@ def googleview(request):
     veneventsignal = get_ven_event_signal_by_eventID('test', venevent[0][0])
     veneventactiveperiod = get_ven_event_active_period_by_eventID('test', venevent[0][0])
 
+    vengtnet1allhousesrecord = get_gtnet_record_allhouses('test')
+
 
     #if the data for the context is a single element with u lable
     #then need to use json.dumps to remove the u label and the comma and make the array with single element from [(u'OptOut',)] to [['OptOut']]
-    return render( request, 'd3view.html',context={'venpower': venpower, 'venusage': venusage, 'eventinfo': eventinfo, 'venlog': venlog, 'veninfo': veninfo, 'vendefaultoptmode': json.dumps(vendefaultoptmode), 'venevent': venevent, 'veneventsignal': veneventsignal, 'veneventactiveperiod': veneventactiveperiod} )
+    return render( request, 'd3view.html',context={'venpower': venpower, 'venusage': venusage, 'eventinfo': eventinfo, 'venlog': venlog, 'veninfo': veninfo, 'vendefaultoptmode': json.dumps(vendefaultoptmode), 'venevent': venevent, 'veneventsignal': veneventsignal, 'veneventactiveperiod': veneventactiveperiod, 'vengtnet1allhousesrecord': vengtnet1allhousesrecord} )
 
 
 @csrf_exempt
@@ -216,3 +218,88 @@ def ajax_get_ven_event_signal(request):
     return JsonResponse(json_records_full, safe=False)
 
 
+@csrf_exempt
+def ajax_get_gtnet1_record_substation(request):
+    gtnet1record_substation = get_gtnet1_record_substation('test')
+
+    json_records_full=[]
+    record_single = {}
+
+    #return JsonResponse(venlog, safe=False)
+
+    #construct the json_record_full using for loop
+    #the json_record_full is indeed json_record_full = { ["time": 1, "responseTime": 1, "venRequest": 1, "vtnResponse": 1, "responseCode": 1, "responseDescription": 1],
+    #                                                    ["time": 2, "responseTime": 2, "venRequest": 2, "vtnResponse": 2, "responseCode": 2, "responseDescription": 2] }
+    #                                                = {json_record_full[0],
+    #                                                   json_record_full[1],
+    #                                                   json_record_full[2], }
+    for i in range(0, len(gtnet1record_substation)):
+        record_single = {
+                         "timestamp": gtnet1record_substation[i][0],
+                         "P": gtnet1record_substation[i][1],
+                         "Q": gtnet1record_substation[i][2],
+                         }
+        json_records_full.append(record_single) #append a new element to the python array
+
+    #print(json_records_full)
+
+    return JsonResponse(json_records_full, safe=False)
+
+
+@csrf_exempt
+def ajax_get_gtnet1_record_house21(request):
+    gtnet1record_house21 = get_gtnet1_record_house21('test')
+
+    json_records_full=[]
+    record_single = {}
+
+    #return JsonResponse(venlog, safe=False)
+
+    #construct the json_record_full using for loop
+    #the json_record_full is indeed json_record_full = { ["time": 1, "responseTime": 1, "venRequest": 1, "vtnResponse": 1, "responseCode": 1, "responseDescription": 1],
+    #                                                    ["time": 2, "responseTime": 2, "venRequest": 2, "vtnResponse": 2, "responseCode": 2, "responseDescription": 2] }
+    #                                                = {json_record_full[0],
+    #                                                   json_record_full[1],
+    #                                                   json_record_full[2], }
+    for i in range(0, len(gtnet1record_house21)):
+        record_single = {
+                         "timestamp": gtnet1record_house21[i][0],
+                         "P": gtnet1record_house21[i][1],
+                         "Q": gtnet1record_house21[i][2],
+                         }
+        json_records_full.append(record_single) #append a new element to the python array
+
+    #print(json_records_full)
+
+    return JsonResponse(json_records_full, safe=False)
+
+
+@csrf_exempt
+def ajax_get_gtnet_record_all_houses(request):
+    gtnetrecord_allhouses = get_gtnet_record_allhouses('test')
+
+    json_records_full=[]
+    record_single = {}
+
+    #return JsonResponse(venlog, safe=False)
+
+    #construct the json_record_full using for loop
+    #the json_record_full is indeed json_record_full = { ["time": 1, "responseTime": 1, "venRequest": 1, "vtnResponse": 1, "responseCode": 1, "responseDescription": 1],
+    #                                                    ["time": 2, "responseTime": 2, "venRequest": 2, "vtnResponse": 2, "responseCode": 2, "responseDescription": 2] }
+    #                                                = {json_record_full[0],
+    #                                                   json_record_full[1],
+    #                                                   json_record_full[2], }
+    for i in range(0, len(gtnetrecord_allhouses)):
+        record_single = {
+                         "locationID": gtnetrecord_allhouses[i][0],
+                         "timestamp": gtnetrecord_allhouses[i][1],
+                         "P": gtnetrecord_allhouses[i][2],
+                         "Q": gtnetrecord_allhouses[i][3],
+                         "temperature": gtnetrecord_allhouses[i][4],
+                         "opt": gtnetrecord_allhouses[i][5],
+                         }
+        json_records_full.append(record_single) #append a new element to the python array
+
+    #print(json_records_full)
+
+    return JsonResponse(json_records_full, safe=False)
